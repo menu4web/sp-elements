@@ -1,0 +1,14 @@
+#SuiteNavPlaceHolder, #SuiteNavPlaceHolder, #O365_NavHeader, #O365_TopMenu, .od-SuiteNav, .ms-SuiteNav {
+	//display: none !Important;
+}
+
+.o365sx-primary-font {
+	display: none !Important;
+}
+
+@media screen and (max-width: 780px) {
+	#homeTabsDiv {
+		visibility: hidden;
+		display: none;
+	}
+}

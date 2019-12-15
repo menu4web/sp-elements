@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.11.1907.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-4E38A1A7CB694B80A15009057A5A98CE">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-4E38A1A7CB694B80A15009057A5A98CE" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="News" Description="" DocumentTemplate="" TemplateType="103" Url="Lists/News" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-2062-426c-90bf-714c59600103" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Lists/News/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/News/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/News/NewForm.aspx" ImageUrl="/_layouts/15/images/itlink.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x0105" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{38561770-8D94-452F-9461-84D54698202A}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Links" Url="{site}/Lists/News/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/links.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="Order" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="URLwMenu" />
+                <FieldRef Name="PostDate" />
+                <FieldRef Name="Category" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field ID="{7a7f3660-d408-4734-9aa0-2d86e33d79ab}" ReadOnly="TRUE" Filterable="FALSE" Type="Computed" Name="URLwMenu2" DisplayName="URL" DisplayNameSrcField="URL" ClassInfo="Menu" AuthoringInfo="(URL with edit menu) (old)" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="URLwMenu2" Version="2">
+              <FieldRefs>
+                <FieldRef Name="URL" />
+                <FieldRef Name="FileLeafRef" />
+                <FieldRef Name="FileRef" />
+                <FieldRef Name="FSObjType" />
+                <FieldRef Name="_EditMenuTableStart" />
+                <FieldRef Name="_EditMenuTableEnd" />
+              </FieldRefs>
+              <DisplayPattern>
+                <FieldSwitch>
+                  <Expr>
+                    <GetVar Name="FreeForm" />
+                  </Expr>
+                  <Case Value="TRUE">
+                    <IfEqual>
+                      <Expr1>
+                        <LookupColumn Name="FSObjType" />
+                      </Expr1>
+                      <Expr2>1</Expr2>
+                      <Then>
+                        <Field Name="FileLeafRef" />
+                      </Then>
+                      <Else>
+                        <Field Name="URL" />
+                      </Else>
+                    </IfEqual>
+                  </Case>
+                  <Default>
+                    <Field Name="_EditMenuTableStart" />
+                    <IfEqual>
+                      <Expr1>
+                        <LookupColumn Name="FSObjType" />
+                      </Expr1>
+                      <Expr2>1</Expr2>
+                      <Then>
+                        <Switch>
+                          <Expr>
+                            <GetVar Name="RecursiveView" />
+                          </Expr>
+                          <Case Value="1">
+                            <LookupColumn Name="FileLeafRef" HTMLEncode="TRUE" />
+                          </Case>
+                          <Default>
+                            <HTML>&lt;a onfocus="OnLink(this)" href="javascript:SubmitFormPost()" onclick='javascript:ClearSearchTerm("</HTML>
+                            <GetVar Name="View" />
+                            <HTML>");ClearSearchTerm("");javascript:SubmitFormPost("</HTML>
+                            <SetVar Name="RootFolder">
+                              <HTML>/</HTML>
+                              <LookupColumn Name="FileRef" />
+                            </SetVar>
+                            <ScriptQuote NotAddingQuote="TRUE">
+                              <FilterLink Default="" Paged="FALSE" />
+                            </ScriptQuote>
+                            <HTML>");javascript:return false;'&gt;</HTML>
+                            <LookupColumn Name="FileLeafRef" HTMLEncode="TRUE" />
+                            <HTML>&lt;/a&gt;</HTML>
+                          </Default>
+                        </Switch>
+                      </Then>
+                      <Else>
+                        <Switch>
+                          <Expr>
+                            <Column Name="URL" />
+                          </Expr>
+                          <Case Value="">
+                            <Column2 Name="URL" HTMLEncode="TRUE" />
+                          </Case>
+                          <Default>
+                            <FieldSwitch>
+                              <Expr>
+                                <FieldProperty Name="URL" Select="Format" />
+                              </Expr>
+                              <Case Value="Image">
+                                <HTML>&lt;img onfocus="OnLink(this)" src="</HTML>
+                                <Column Name="URL" HTMLEncode="TRUE" />
+                                <HTML>" alt="</HTML>
+                                <Column2 Name="URL" HTMLEncode="TRUE" />
+                                <HTML>" /&gt;</HTML>
+                              </Case>
+                              <Default>
+                                <HTML>&lt;a onfocus="OnLink(this)" href="</HTML>
+                                <Column Name="URL" HTMLEncode="TRUE" />
+                                <HTML>"&gt;</HTML>
+                                <Switch>
+                                  <Expr>
+                                    <Column2 Name="URL" />
+                                  </Expr>
+                                  <Case Value="">
+                                    <Column Name="URL" HTMLEncode="TRUE" />
+                                  </Case>
+                                  <Default>
+                                    <Column2 Name="URL" HTMLEncode="TRUE" />
+                                  </Default>
+                                </Switch>
+                                <HTML>&lt;/a&gt;</HTML>
+                              </Default>
+                            </FieldSwitch>
+                          </Default>
+                        </Switch>
+                      </Else>
+                    </IfEqual>
+                    <Field Name="_EditMenuTableEnd" />
+                  </Default>
+                </FieldSwitch>
+              </DisplayPattern>
+            </Field>
+            <Field Type="DateTime" DisplayName="Post Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" FriendlyDisplayFormat="Disabled" ID="{a67c1a9e-34ae-4121-89fb-f4d8ae99339f}" SourceID="{{listid:News}}" StaticName="PostDate" Name="PostDate" ColName="datetime1" RowOrdinal="0" CustomFormatter="" CalType="0" Version="1" />
+            <Field Type="Choice" DisplayName="Category" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{47a56f49-6f60-451c-8d0b-e0c895900771}" SourceID="{{listid:News}}" StaticName="Category" Name="Category" ColName="nvarchar6" RowOrdinal="0">
+              <CHOICES>
+                <CHOICE>Employee News</CHOICE>
+                <CHOICE>Business Updates</CHOICE>
+              </CHOICES>
+            </Field>
+          </pnp:Fields>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c29e077d-f466-4d8e-8bbe-72b66c5f205c" Name="URL" Required="true" DisplayName="URL" />
+            <pnp:FieldRef ID="9da97a8a-1da5-4a77-98d3-4bc10456e700" Name="Comments" DisplayName="Notes" />
+            <pnp:FieldRef ID="2a9ab6d3-268a-4c1c-9897-e5f018f87e64" Name="URLwMenu" DisplayName="URL" />
+            <pnp:FieldRef ID="aeaf07ee-d2fb-448b-a7a3-cf7e062d6c2a" Name="URLNoMenu" DisplayName="URL" />
+          </pnp:FieldRefs>
+          <pnp:DataRows UpdateBehavior="Overwrite">
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Mobile Phone Roaming Rates</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/04/04 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">2_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Citrix and VPN Enhancement</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/03/22 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">3_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Important Changes to Your Group Retirement Program</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/01/07 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">4_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Payroll Calendar - Available Now!</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2018/12/10 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">5_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Professional Development, Memberships, and Fitness</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2018/11/02 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">6_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Moves Toronto Headquarters</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/01/24 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">7_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Declares Third Quarter Dividend</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/03/07 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">8_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Reports Third Quarter Financial Results</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2018/10/05 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">9_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Announces Results of Special Meetings of Securityholders</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2018/10/03 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">1000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">10_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Announces Estimated Annual Reinvested Capital Gains</pnp:DataValue>
+              <pnp:DataValue FieldName="Comments" />
+              <pnp:DataValue FieldName="PostDate">2019/11/12 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">1100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">11_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+          </pnp:DataRows>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

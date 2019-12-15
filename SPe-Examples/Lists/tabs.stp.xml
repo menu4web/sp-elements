@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.11.1907.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-B5F9B8911CDB40CD83FA0ACF03A0CA29">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-B5F9B8911CDB40CD83FA0ACF03A0CA29" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Tabs" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Tabs" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Tabs/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Tabs/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Tabs/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{C441586F-9EC8-4C0D-A534-8F389A4D0515}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Tabs/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="Ord" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Header" />
+                <FieldRef Name="Body" />
+                <FieldRef Name="Ord" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="Note" DisplayName="Header" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="3" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" ID="{ffdf1ad2-95af-47e3-a99b-1efec43bfd26}" SourceID="{{listid:Tabs}}" StaticName="Header" Name="Header" ColName="ntext2" RowOrdinal="0" />
+            <Field Type="Note" DisplayName="Body" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" Sortable="FALSE" ID="{b781b7b2-56db-492d-8ac5-ac3745f6640c}" SourceID="{{listid:Tabs}}" StaticName="Body" Name="Body" ColName="ntext3" RowOrdinal="0" />
+            <Field Name="Ord" FromBaseType="FALSE" Type="Number" DisplayName="Ord" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{43074558-d820-4c75-a72d-9c2db7186c39}" Version="1" StaticName="Ord" SourceID="{{listid:Tabs}}" ColName="float1" RowOrdinal="0" />
+          </pnp:Fields>
+          <pnp:DataRows UpdateBehavior="Overwrite">
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">News</pnp:DataValue>
+              <pnp:DataValue FieldName="Header">&lt;div class="ExternalClass24C26AD12C42494FAF825643E5290EFD"&gt;&lt;div style="height&amp;#58;12px;border-top&amp;#58;7px solid #d02158;"&gt;&amp;#160;&lt;/div&gt;&lt;table width="143" cellspacing="0" cellpadding="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="13"&gt;&amp;#160;&lt;/td&gt;&lt;td width="25" style="padding-top&amp;#58;5px;"&gt;
+               &lt;img src="/sites/Test3/SiteAssets/Tabs/i-news.png" data-themekey="#" alt="" /&gt;
+            &lt;/td&gt;&lt;td&gt; 
+               &lt;span style="font-size&amp;#58;11pt;"&gt;News&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div style="height&amp;#58;14px;"&gt;&amp;#160;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Body">&lt;div class="ExternalClass4E688CA04FAD4B5FB6A0FDC863E16F03"&gt;&lt;div style="padding&amp;#58;20px;min-height&amp;#58;320px;"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt; 
+                  &lt;img src="/sites/Test3/SiteAssets/Tabs/h-news.png" data-themekey="#" alt="" style="margin-right&amp;#58;15px;margin-left&amp;#58;5px;" /&gt; 
+               &lt;/td&gt;&lt;td&gt; 
+                  &lt;span style="font-size&amp;#58;11pt;"&gt;Please visit department sites to find all updates for each team.&lt;br&gt;&lt;br&gt;Go to 
+                     &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;M4W​ Newsroom&lt;/a&gt; for all latest corporate updates and insights.&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt; 
+      &lt;br&gt; 
+      &lt;table width="100%"&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;&lt;table id="newsEmployee" cellpadding="2"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" data-themekey="#" alt="" /&gt;
+                           &lt;/td&gt;&lt;td colspan="3"&gt;EMPLOYEE NEWS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="4"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table id="newsBusiness" cellpadding="2"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;​ 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" data-themekey="#" alt="" /&gt; &lt;/td&gt;&lt;td colspan="3"&gt;BUSINESS UPDATES&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="4"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;​
+      &lt;p&gt;&amp;#160;​&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Ord">10</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">1_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">About M4W</pnp:DataValue>
+              <pnp:DataValue FieldName="Header">&lt;div class="ExternalClass24C26AD12C42494FAF825643E5290EFD"&gt;&lt;div style="height&amp;#58;12px;border-top&amp;#58;7px solid #ed5b36;"&gt;&amp;#160;&lt;/div&gt;&lt;table width="143" cellspacing="0" cellpadding="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="13"&gt;&amp;#160;&lt;/td&gt;&lt;td width="25" style="padding-top&amp;#58;5px;"&gt;
+               &lt;img src="/sites/Test3/SiteAssets/Tabs/i-about.png" alt="" /&gt; 
+               &lt;br&gt; 
+            &lt;/td&gt;&lt;td&gt; 
+               &lt;span style="font-size&amp;#58;11pt;"&gt;About M4W&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div style="height&amp;#58;14px;"&gt;&amp;#160;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Body">&lt;div class="ExternalClass4E688CA04FAD4B5FB6A0FDC863E16F03"&gt;&lt;div style="padding&amp;#58;20px;min-height&amp;#58;320px;"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;
+                  &lt;img src="/sites/Test3/SiteAssets/Tabs/h-about.png" alt="" style="margin-right&amp;#58;15px;margin-left&amp;#58;5px;" /&gt;​​&lt;br&gt;&lt;/td&gt;&lt;td&gt; 
+                  &lt;span style="font-size&amp;#58;14.66px;"&gt;At M4W&amp;#160;we strive to keep ourselves grounded in who we are, what we want to accomplish, what guides the way we do business, and how we work together. We believe ‘how’ we achieve our success is equally as important as our successes and have established a set of guiding principles that provide all of us with common goals around the culture we strive to create and maintain.​&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;​ 
+      &lt;br&gt;
+      &lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt; 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" alt="" /&gt; 
+                           &lt;/td&gt;&lt;td&gt;CORPORATE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;M4W Brand&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Corporate Structure&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;M4W's Guiding Principles&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Business Plan Summary&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Office Addresses&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Community Service&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt; 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" alt="" /&gt; 
+                           &lt;/td&gt;&lt;td&gt;DEPARTMENTS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Legal &amp;amp; Corporate Governance&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Compliance &amp;amp; Oversight&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Information Technology&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Internal Audit&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Investment Operations&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Human Resources&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Marketing&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt; 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" alt="" /&gt; 
+                           &lt;/td&gt;&lt;td&gt;PEOPLE AT M4W​&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Employee Milestones&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Meet the New Hires&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Employee Newsletter&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Ord">20</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">2_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">My Resources</pnp:DataValue>
+              <pnp:DataValue FieldName="Header">&lt;div class="ExternalClass24C26AD12C42494FAF825643E5290EFD"&gt;&lt;div style="height&amp;#58;12px;border-top&amp;#58;7px solid #f57e20;"&gt;&amp;#160;&lt;/div&gt;&lt;table width="143" cellspacing="0" cellpadding="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="13"&gt;&amp;#160;&lt;/td&gt;&lt;td width="25" style="padding-top&amp;#58;5px;"&gt; 
+               &lt;img src="/sites/Test3/SiteAssets/Tabs/i-resources.png" data-themekey="#" alt="" /&gt;
+            &lt;/td&gt;&lt;td&gt; 
+               &lt;span style="font-size&amp;#58;11pt;"&gt;My Resources&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div style="height&amp;#58;14px;"&gt;&amp;#160;​&lt;/div&gt;
+&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Body">&lt;div class="ExternalClassFCD65AD45FB04BEA9EA7BD0BF13E78C9"&gt;&lt;div style="padding&amp;#58;20px;min-height&amp;#58;320px;"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt; 
+                  &lt;img src="/sites/Test3/SiteAssets/Tabs/h-resources.png" data-themekey="#" alt="" style="margin-right&amp;#58;15px;margin-left&amp;#58;5px;" /&gt;
+               &lt;/td&gt;&lt;td&gt;
+                  &lt;span style="font-size&amp;#58;11pt;"&gt;Marketing and Human Resources are working together to enhance the user experience on our Intranet.​&lt;br&gt;&lt;br&gt;Please 
+                     &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt; 
+                        &lt;strong&gt;complete this short survey&lt;/strong&gt;&lt;/a&gt; to tell us about your experience and share your ideas about what you’d like to see on the Intranet.&lt;/span&gt; &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+      &lt;br&gt; 
+      &lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" data-themekey="#" alt="" /&gt;
+                           &lt;/td&gt;&lt;td&gt;PAYROLL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;Payroll Calendar&lt;/a&gt;​&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;ePost statements&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Workday Resources&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;HealthPlus Fitness Balance&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" data-themekey="#" alt="" /&gt;
+                           &lt;/td&gt;&lt;td&gt;BENEFITS AND INVESTMENTS&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;​&amp;#160;​&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;Education Allowance&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;Employee Family &amp;amp; Assistance Program&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;Group Insurance Coverage&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Health &amp;amp; Dental Benefits&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements" target="_blank"&gt;Health &amp;amp; Wellness Allowance&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Marketplace&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Payroll Forms&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Professional Association &amp;amp; Membership Allowance&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Time Off &amp;amp; Leaves&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Retirement Savings &amp;amp; Investments&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" data-themekey="#" alt="" /&gt;
+                           &lt;/td&gt;&lt;td&gt;LEARNING AND DEVELOPMENT&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Collaboration Journal&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Performance Management&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Learning @ M4W&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Ord">30</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">3_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Policies</pnp:DataValue>
+              <pnp:DataValue FieldName="Header">&lt;div class="ExternalClass24C26AD12C42494FAF825643E5290EFD"&gt;&lt;div style="height&amp;#58;12px;border-top&amp;#58;7px solid #feb81a;"&gt;&amp;#160;&lt;/div&gt;&lt;table width="143" cellspacing="0" cellpadding="0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td width="13"&gt;&amp;#160;&lt;/td&gt;&lt;td width="25" style="padding-top&amp;#58;5px;"&gt;
+               &lt;img src="/sites/Test3/SiteAssets/Tabs/i-policies.png" alt="" /&gt; 
+            &lt;/td&gt;&lt;td&gt;
+               &lt;span style="font-size&amp;#58;11pt;"&gt;Policies&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div style="height&amp;#58;14px;"&gt;&amp;#160;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Body">&lt;div class="ExternalClass4E688CA04FAD4B5FB6A0FDC863E16F03"&gt;&lt;div style="padding&amp;#58;20px;min-height&amp;#58;320px;"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;
+                  &lt;img src="/sites/Test3/SiteAssets/Tabs/h-policies.png" alt="" style="margin-right&amp;#58;15px;margin-left&amp;#58;5px;" /&gt;
+               &lt;/td&gt;&lt;td&gt; 
+                  &lt;span style="font-size&amp;#58;11pt;"&gt;All employees are required to complete 
+                     &lt;strong&gt;Cyber Security Awareness&lt;/strong&gt; training.&lt;br&gt;&lt;br&gt;You have to complete all modules, answer each question, and submit your results 
+                     &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;within SharePoint&lt;/a&gt;.&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+      &lt;br&gt; 
+      &lt;table&gt;&lt;tbody&gt;&lt;tr valign="top"&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt; 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" alt="" /&gt; 
+                           &lt;/td&gt;&lt;td&gt;COMPANY WIDE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Employee Handbook&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Corporate Policies&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;Human Resources&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;td style="padding-left&amp;#58;20px;"&gt;&amp;#160;&lt;/td&gt;&lt;td style="border-left&amp;#58;1px solid #d0d0d0;"&gt;&amp;#160;&lt;/td&gt;&lt;td&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt; 
+                              &lt;img src="/sites/Test3/SiteAssets/Tabs/i-gt.gif" alt="" /&gt; 
+                           &lt;/td&gt;&lt;td&gt;BUSINESS ENTITY&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&amp;#160;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;#160;&lt;/td&gt;&lt;td&gt; 
+                              &lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;M4W Inc.&lt;/a&gt;&lt;br&gt;&lt;a href="https&amp;#58;//github.com/menu4web/sp-elements"&gt;menu4web&lt;/a&gt;​​&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&amp;#160;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</pnp:DataValue>
+              <pnp:DataValue FieldName="Ord">40</pnp:DataValue>
+              <pnp:DataValue FieldName="Order">400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">4_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+          </pnp:DataRows>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://1-canadaeast1.pushp.svc.ms/notifications?token=w0-c886d159-2890-4190-849d-2bbc2b7582e9" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

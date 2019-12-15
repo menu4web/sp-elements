@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "resource-loader-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/resourceLoader/ResourceLoaderApplicationCustomizer.js",
+          "manifest": "./src/extensions/resourceLoader/ResourceLoaderApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ResourceLoaderApplicationCustomizerStrings": "lib/extensions/resourceLoader/loc/{locale}.js"
+  }
+}

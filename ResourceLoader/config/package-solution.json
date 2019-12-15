@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Resource Loader",
+    "id": "1907324f-188f-45ac-8808-47fd3fd80abe",
+    "version": "1.0.0.0",
+    "features": [
+      {
+        "title": "Resource Loader",
+        "description": "Load SP.js, SPe.js and Resources.js.",
+        "id": "9e24c6f0-be3b-4d08-8303-58bc7ecfdba1",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "clientsideinstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/resource-loader.sppkg"
+  }
+}

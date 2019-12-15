@@ -1,0 +1,1267 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.11.1907.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-093C800C8DFE4EF994B3AD12C7D4705F">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-093C800C8DFE4EF994B3AD12C7D4705F" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Milestones" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Milestones" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Milestones/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Milestones/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Milestones/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{B57F89AF-9424-43BF-990E-36D1095F812C}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Milestones/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="Stage" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Milestones" />
+                <FieldRef Name="TargetDate" />
+                <FieldRef Name="CompletionDate" />
+                <FieldRef Name="Notes" />
+                <FieldRef Name="Stage" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="Choice" DisplayName="Stage" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{96664cb5-74a2-42e8-8321-0a985b7e9e49}" SourceID="{{listid:Milestones}}" StaticName="Stage" Name="Stage" ColName="nvarchar4" RowOrdinal="0">
+              <CHOICES>
+                <CHOICE>1. Introduction</CHOICE>
+                <CHOICE>2. IMA</CHOICE>
+                <CHOICE>3. Setup</CHOICE>
+                <CHOICE>4. Funding</CHOICE>
+                <CHOICE>5. Go Live</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Note" DisplayName="Milestones" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="5" RichText="FALSE" Sortable="FALSE" ID="{f90362db-a933-46cc-88ae-643c64f92b5b}" SourceID="{{listid:Milestones}}" StaticName="Milestones" Name="Milestones" ColName="ntext2" RowOrdinal="0" />
+            <Field Type="DateTime" DisplayName="Target Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" FriendlyDisplayFormat="Disabled" ID="{71df53c0-3144-4d65-983b-ce3fb07a961b}" SourceID="{{listid:Milestones}}" StaticName="TargetDate" Name="TargetDate" ColName="datetime1" RowOrdinal="0" CustomFormatter="" CalType="0" Version="3" />
+            <Field Type="DateTime" DisplayName="Completion Date" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateOnly" FriendlyDisplayFormat="Disabled" ID="{339e9459-7257-4508-908c-a16f2c67d735}" SourceID="{{listid:Milestones}}" StaticName="CompletionDate" Name="CompletionDate" ColName="datetime2" RowOrdinal="0" CustomFormatter="" CalType="0" Version="3" />
+            <Field Type="Note" DisplayName="Notes" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="5" RichText="FALSE" Sortable="FALSE" ID="{05692c5b-6dd2-4a3d-b088-43dede4b1a71}" SourceID="{{listid:Milestones}}" StaticName="Notes" Name="Notes" ColName="ntext3" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" Version="1" />
+          </pnp:Fields>
+          <pnp:DataRows UpdateBehavior="Overwrite">
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Sales handoff</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Sales to handoff relationship to Onboarding via email or conference call</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/06/29 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/06/29 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">1_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Establish client name</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Establish one consistent client name internally upfront</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/06/29 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/06/29 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">2_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Liaise with sales for details</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Liaise with sales to ascertain the following:
+- Size of mandate win
+- Mandate type
+- Mode of Investment: Segregated or Product
+- Point of contact information of new client
+- Contracting entity
+- Jurisdiction of client
+- Client type
+- Intermediaries involved</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/07/11 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/07/11 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">3_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Liaise with Legal and Compliance for details</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Liaise with Legal and Compliance to determine:
+- How to structure the arrangement to meet any local regulatory requirements (i.e. what product structure, what contracting party
+- Which regulatory framework to apply
+- Is there a consultant involved and is there a payment structure that would necessitate contracts (i.e. referral arrangements, ) client disclosures, etc.
+- AML issues by virtue of jurisdiction/source of funds/client etc.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/07/11 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/07/11 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">4_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">SMEs notified</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">SMEs notified that business is won</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/07/05 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/07/05 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">5_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Establish communication frequency</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Establish communication frequency between client, custodian and administrator</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/08 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/13 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">6_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Establish escalation points</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Establish escalation points</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/07/05 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/07/05 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">7_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Details of onboard documented</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Details of TM, Custodian, target funding date, trade date, settlement date, type of transition shared, fees paid from fund or by client, responsibility for managing FX on trades - all confirmed and documented</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/10 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">8_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Standard custodian requirements</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Standard custodian requirements from CCO provided</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/02 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">9_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Set up call with CCO and custodian</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Set up conference call with CCO and client custodian to discuss standard requirements and market opening</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/13 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">10_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Weekly custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Weekly custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/13 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/11/21 4:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">11_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Establish date initial list of assets will be received</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Establish date initial list of assets will be received</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">12_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Confirm we will receive custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Confirm we will receive custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/13 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/22 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">13_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">RFP distributed to SMEs</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">RFP distributed to SMEs (where applicable)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">14_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Milestone and communication plan</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">1. Introduction</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Milestone and communication plan drafted</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/02 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/02 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">15_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Distribute IMA to SMEs</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Distribute IMA to SMEs within 1 day after receiving IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/02 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/02 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">16_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Legal IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Legal IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">17_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Compliance IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Compliance IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">18_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">1900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">19_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Custody IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Custody IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">20_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Valuations IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Valuations IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">21_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">App Support/Data IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">App Support/Data IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">22_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Reporting/Performance IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Reporting/Performance IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">23_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Product IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Product IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">24_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Taxation IMA Review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Taxation IMA Review prior to internal meeting with questions and issues identified and to update issue log on SharePoint.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">25_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance billing requests</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance to ensure billing requests can be accommodated</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">26_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Insurance coverage</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Ensure either adequate insurance coverage exists or is available for new mandate per the IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">27_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Internal IMA meeting with all SMEs</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Internal IMA meeting with all SMEs scheduled (3-5 business days after receiving IMA)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/08 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/08 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">28_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Internal markup of IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">After the IMA meeting takes place, Legal will then turn an internal markup of the IMA for internal review prior to it being provided to Onboarding for dissemination to the client.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/13 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/10 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">2900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">29_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Minutes, decisions and actions</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Minutes, decisions and actions are documented and posted on site</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/13 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/13 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">30_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Set IPS review meeting</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Set IPS review meeting with PM, APM, Product and Onboarding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">31_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">SMEs Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Workbook available for completion by SMEs</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/27 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">32_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Milestone and communication plan</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Milestone and communication plan finalized</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/09 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">33_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Initial IMA to be provided to Onboarding by the 7th business day</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Initial IMA to be provided to Onboarding by the 7th business day</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/13 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">34_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">IMA sent to client on the 8th business day</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">IMA sent to client on the 8th business day</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/14 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">35_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Client package and forms sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Client Information Package, KYC, CRS/FATCA forms sent to client (note confirm with Tax most recent CRS/FATCA forms used)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/14 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">36_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Sample Reporting sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Sample Reporting sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">37_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">IPS approved before final IMA sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">IPS approved before final IMA sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">38_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Client reviews IMA and provides feedback</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Client reviews IMA and provides feedback</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/27 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/27 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">3900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">39_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Client comments sent to SMEs for review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Client comments sent to SMEs for review</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/28 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/28 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">40_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Legal - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Legal - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">41_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Compliance - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Compliance - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/21 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">42_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/20 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">43_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Custody - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Custody - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">44_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Valuations - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Valuations - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">45_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">App Support/Data - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">App Support/Data - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/22 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">46_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Reporting/Performance - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Reporting/Performance - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">47_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Product - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Product - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">48_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Taxation - 2nd IMA review</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Taxation - 2nd IMA review and confirm further changes to Legal within 2 business days and update issue log on SharePoint - (v.3 of IMA)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">4900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">49_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Executive provide sign off on risk and rationale</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Executive provide sign off on risk and rationale within 2 business days</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">50_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Executive sign off status updated on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Executive sign off status updated on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">51_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Weekly custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Weekly custodian market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">52_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Final IMA Sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Final IMA Sent to client</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/10/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/09 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">53_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Final IMA uploaded to KYC site</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Final IMA uploaded to KYC site</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">54_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">FX trading approach determined</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">FX trading approach determined</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">55_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Custody to provide FX exposure from TAG11A</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Custody to include summary of exposure from using TAG 11A (i.e. currencies we know FX will not be booked on trade date)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">56_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Custody to provide Custodial information on SharePoint</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">2. IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">For FX traded by IM, custody to provide (on SharePoint):
+- Agreement with Custodian
+- Defined spreads
+- Fixing windows
+- List of restricted counterparties
+- Timing around EM and DM</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">57_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Internal kick off meeting to reiterate roles and responsibilities</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">After IMA signoff - Internal kick off meeting to discuss frequency of meetings and milestones; Reiterate roles and responsibilities and to confirm escalation points.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">58_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Decisions and actions are circulated</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Minutes, decisions and actions are documented and circulated.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">5900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">59_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">External meeting to discuss roles &amp; responsibilities</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">External (client, administrator, custodian) meeting to discuss frequency of future meetings, refine milestone plan, roles &amp; responsibilities (in kind only)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">60_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Minutes, decisions and actions are documented and circulated.</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Minutes, decisions and actions are documented and circulated.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">61_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Client documents uploaded to KYC site</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Client Information Package, KYC, CRS/FATCA forms received from Client and uploaded to KYC site</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">62_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Onboarding to fill out Entity Workbook Attributes</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Onboarding to fill out Entity Workbook Attributes 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/24 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">63_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Product to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Product to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/07 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">64_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Compliance to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Compliance to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/11/06 4:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">65_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">66_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Custody to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Custody to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/24 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">67_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Valuations to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Valuations to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/27 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/20 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">68_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">App Support/Data to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">App Support/Data to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">6900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">69_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Reporting/Performance to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Reporting/Performance to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2019/02/01 4:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">70_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Market opening updates</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/22 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">71_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Creates and approve the model</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Creates and approve the model within 4 BD once IPS is confirmed; send to Ops</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">72_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Compliance sets up rules in AIM 5 business days in advance of funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Compliance sets up rules in AIM 5 business days in advance of funding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">73_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Receive preliminary asset list 4-5 days prior to funding (in kind only)</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Receive preliminary asset list 4-5 days prior to funding (in kind only)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/17 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">74_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Trading to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Trading to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">75_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">App Support to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">App Support to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/18 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/22 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">76_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Valuations to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Valuations to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/18 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/21 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">77_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Product to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Product to review prelim asset list</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/18 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/18 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">78_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Performance Team to confirm requirements</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Benchmark confirmation/ acquisition 
+Confirm Fee information (schedule, paid inside/outside the fund)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/18 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/09/24 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">7900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">79_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Confirm insurance coverage (if applicable)</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Acknowledge adequate insurance coverage for new mandate per IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/20 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/20 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">80_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">SWIFT testing 3-5 BD before funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">SWIFT testing 3-5 BD before funding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/17 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/22 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">81_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Model setup in BB AIM 4 BD prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Model setup in BB AIM 4 BD prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/10/19 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/19 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">82_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Eagle setup completed 1 BD prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Eagle setup completed 1 BD prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">83_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">BB AIM setup completed 1 BD prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">BB AIM setup completed 1 BD prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">84_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Valuations' check list to complete</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">- Cash and Asset Rec complete
+- Accounting attributes complete
+- Booking dummy/actual cap stock
+- Confirm FX protocols (Tag 11A, initial subscription FX)
+- Setup client (accounting) reporting</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">85_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Product to fill out Entity Workbook</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">3. Setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Product to fill out Entity Workbook 5 business days prior to funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/27 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/08/10 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">86_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Ensure online platform access is available for Custody and Valuations</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Ensure online platform access is available for Custody and Valuations (Transitioning account - on T, new account - 5 BD prior to funding)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/09/17 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate">2018/10/30 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">87_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Receive final certified list 2 days prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Receive final certified list 2 days prior to funding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate">2018/08/29 2:00:00 PM</pnp:DataValue>
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">88_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Cash is received on funding date or settlement date (if pretrading)</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Cash is received on funding date or settlement date (if pretrading)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">8900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">89_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">In-kind positions are received on funding date</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">In-kind positions are received on funding date or settlement date (if funding date = trade date)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">90_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Positions are loaded into Eagle and are reconciled.</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Positions are loaded into Eagle. AIM, Eagle and custodial records reconcile with the certified list on T</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">91_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Positions are loaded into AIM</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Positions are loaded into AIM</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">92_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Cash reconciles and infused into AIM</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Cash reconciles with certified list and/or cash advice from client and custodian and infused into AIM</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">93_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Trades executed based on model and accurately traded</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Trades executed based on model and accurately traded</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">94_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Reputational/Financial impact escalation</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Reputational/Financial impact escalation (to Executives on T, T+1), where applicable</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">95_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Daily update meetings held with SMEs</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Daily update meetings held with SMEs (starting on funding date and up to 5BD after) to discuss all issues</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">96_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">FX, Trade Equity Reports and Unmatched Trade Reports provided</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">FX, Trade Equity Reports and Unmatched Trade Reports provided to the Onboarding Team</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">97_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Monitor cash balances and notify of any issues</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Monitor cash balances for potential overdrafts to resolve any issues. Notify Onboarding on any issues requiring escalations</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">98_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">All trades are monitored and identified</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">All trades are monitored and trade issues identified and followed up on prior to settlement date as per normal Business As Usual.</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">9900</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">99_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance sets up billing</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">4. Funding</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance sets up billing in Excel and Multiview once funding has been completed</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">100_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Finance confirm billing has started based on IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Finance confirm billing has started based on IMA</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10100</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">101_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Cash Rec (daily - Eagle to Custody)</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Cash Rec (daily - Eagle to Custody)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10200</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">102_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Post set up for additional custody setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Post set up for additional custody setup within 5BD after funding (Proxy, Class Action)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10300</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">103_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Compliance setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">- Ethidex, Personal Trading, Soft Dollars for QIRs, Monthly Aggregate Holdings
+- IDRs updated within 5 BD</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10400</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">104_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Confirm reporting requirement with On Boarding</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Confirm reporting requirement with On Boarding</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10500</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">105_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Client reporting setup</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Information delivery client reporting setup and tested within 5 BD</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10600</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">106_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Post Implementation Review conducted</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Post Implementation Review conducted and documented within 7 BD</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10700</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">107_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:DataValue FieldName="Title">Asset recs are due by Day 10</pnp:DataValue>
+              <pnp:DataValue FieldName="Stage">5. Go Live</pnp:DataValue>
+              <pnp:DataValue FieldName="Milestones">Asset Rec (as defined by client - Eagle to Custody)</pnp:DataValue>
+              <pnp:DataValue FieldName="TargetDate" />
+              <pnp:DataValue FieldName="CompletionDate" />
+              <pnp:DataValue FieldName="Notes" />
+              <pnp:DataValue FieldName="Order">10800</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">108_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="MetaInfo" />
+            </pnp:DataRow>
+          </pnp:DataRows>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://1-canadaeast1.pushp.svc.ms/notifications?token=w3-ee2790fc-2945-4b18-8efd-d4ef8f947ab7" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

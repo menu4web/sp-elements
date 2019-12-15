@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.11.1907.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-3541BB3BFFC544499DC78761C7ECCCC3">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-3541BB3BFFC544499DC78761C7ECCCC3" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Requests" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/Requests" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="500" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableAttachments="false" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Requests/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Requests/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Requests/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{DA5CA993-EA55-4F96-9792-C2F3D8176FBC}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Requests/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Requester" />
+                <FieldRef Name="Email" />
+                <FieldRef Name="Notes" />
+                <FieldRef Name="Location" />
+                <FieldRef Name="Details" />
+                <FieldRef Name="Status" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="Text" DisplayName="Requester" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{d300756d-a604-469c-8449-56b0200a45cc}" SourceID="{{listid:Requests}}" StaticName="Requester" Name="Requester" ColName="nvarchar4" RowOrdinal="0" CustomFormatter="" Version="1" />
+            <Field Type="Text" DisplayName="E-mail" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{9d0707c4-22a2-4965-a82a-041dedfcb107}" SourceID="{{listid:Requests}}" StaticName="Email" Name="Email" ColName="nvarchar5" RowOrdinal="0" CustomFormatter="" Version="3" />
+            <Field Name="Notes" FromBaseType="FALSE" Type="Note" DisplayName="Notes" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" ID="{9c989027-3577-4be0-a9ac-b9a56b8d6a05}" Version="1" StaticName="Notes" SourceID="{{listid:Requests}}" ColName="ntext2" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="Location" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{ee8b2e1b-6453-4fb8-a147-e71f58608072}" SourceID="{{listid:Requests}}" StaticName="Location" Name="Location" ColName="nvarchar6" RowOrdinal="0">
+              <CHOICES>
+                <CHOICE>Toronto</CHOICE>
+                <CHOICE>Montreal</CHOICE>
+                <CHOICE>Vancouver</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Note" DisplayName="Details" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" ID="{7d55248c-5575-4636-ba92-2103d2156794}" SourceID="{{listid:Requests}}" StaticName="Details" Name="Details" ColName="ntext3" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="Status" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{aab067e4-f0b4-4b68-96db-b2b5cea026af}" SourceID="{{listid:Requests}}" StaticName="Status" Name="Status" ColName="nvarchar7" RowOrdinal="0" CustomFormatter="" Version="1">
+              <Default>New</Default>
+              <CHOICES>
+                <CHOICE>New</CHOICE>
+                <CHOICE>In Process</CHOICE>
+                <CHOICE>Completed</CHOICE>
+              </CHOICES>
+            </Field>
+          </pnp:Fields>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://0-canadaeast1.pushp.svc.ms/notifications?token=w1-56f1c8ed-3449-4bba-b682-c428759ea381" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

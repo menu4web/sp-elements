@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Content Loader",
+    "id": "74e1e186-d3fc-4f90-abc9-57d0334baa84",
+    "version": "1.0.0.0",
+    "features": [
+      {
+        "title": "Content Loader",
+        "description": "Load content from a text file.",
+        "id": "287cb3bf-2d2f-42dd-80f8-4f382d0ab4dc",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/content-loader.sppkg"
+  }
+}
