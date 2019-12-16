@@ -1,1 +1,1 @@
-Load content from a text file.
+SPFx Loaders and SPe.js. Customizing modern SharePoint with JavaScript.
