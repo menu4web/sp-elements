@@ -1,1 +1,1 @@
-Load content from a text file.
+SPFx web part. Load content from a text file.
