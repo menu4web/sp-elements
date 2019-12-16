@@ -1,2 +1,1 @@
-# sp-elements
-SPFx Loaders &amp; SPe.js. Customizing modern SharePoint with JavaScript.
+Load content from a text file.
