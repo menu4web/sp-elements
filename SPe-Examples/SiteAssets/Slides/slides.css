@@ -1,0 +1,28 @@
+.rslides_tabs {
+  font-size: 8pt;
+  margin: 4px 0 0 0;
+  padding: 4px 0 0 0;
+  max-width: 1024px;
+  text-align: right;
+}
+
+.rslides_tabs li {
+  display: inline;
+  margin: 0 0 0 4px;
+  padding: 3px 0;
+  border: 1px solid #a9a9a9;
+  font-weight: bold;
+}
+
+.rslides_tabs a {
+  padding: 3px 8px;
+  display: inline;
+  color: #000000;
+  text-decoration: none;
+}
+
+.rslides_tabs .rslides_here a {
+  background: #f0592b;
+  color: #ffffff;
+  border: 1px 0 solid #a9a9a9;
+}

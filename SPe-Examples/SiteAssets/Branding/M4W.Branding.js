@@ -1,7 +1,15 @@
+(function () {
+
+"use strict";
+
 // Logo
 
-SPe.hide(SPe.Form.elGetByClass(document, "div", "logoCell-"));
+var refLogo = SPe.Form.elGetByClass(document, "div", "logoCell-");
+if (refLogo) { SPe.hide(refLogo); }
 
 // Buttons
 
-SPe.hide(SPe.Form.elGetByText(document, "button", "ShareSite"));
+var refShareSite = SPe.Form.elGetByText(document, "button", "ShareSite");
+if (refShareSite) { SPe.hide(refShareSite); }
+
+}());

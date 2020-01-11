@@ -1,4 +1,4 @@
-SPe.initTabs = function () {
+SPe.initTabs = function () { SPe.Util.when(function () { return document.getElementById("homeTabs"); }, function () {
 
 "use strict";
 
@@ -47,7 +47,7 @@ onTabsQuerySucceeded = function (items) {
 
 SPe.Query.ready(loadTabs);
 
-};
+});};
 
 SPe.initNews = function () {
 

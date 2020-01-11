@@ -1,8 +1,6 @@
-/* slava naumenko (c) - https://github.com/menu4web/sp-elements */
-
 if (!window.SPe) {
 
-var SPe = { version: "7.1", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.4", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -242,7 +240,7 @@ SPe.Date.addBusinessDays = function (myd, days, holidays) {
 
 SPe.Form.get = function (base) {
 	base = base || window;
-	var f = base.document.getElementById("part1") || base.document.getElementById("formTbl") || SPe.Form.elGetByClass(document, "div", "od-Panel--md");
+	var f = base.document.getElementById("part1") || base.document.getElementById("formTbl") || SPe.Form.elGetByClass(document, "div", "od-Panel--md") || SPe.Form.elGetByClass(document, "div", "od-ListForm-fullPage");
 	return f;
 };
 
@@ -1000,10 +998,8 @@ SPe.Form.ready = function (callback) {
 SPe.Form.observe = function (callback) {
 	var observer = new MutationObserver(function (mutations) {
 		mutations.forEach(function (m) {
-			if (SPe.has(m.target.className, "primaryCommand")) {
-				SPe.Util.wait(function formLoading () {
-					callback();
-				}, 90);
+			if (SPe.has(m.target.className, "od-ListForm-topBar")) {
+				SPe.Util.wait(function formLoading () { callback(); });
 			}
 		});
 	});
@@ -1588,21 +1584,27 @@ SPe.Util.functionName = function (f) {
 SPe.Util.timeout = [];
 
 SPe.Util.wait = function (callback, ms) {
-	ms = ms || 200;
+	ms = ms || 190;
 	var f = SPe.Util.functionName(callback) || "no-name";
 	clearTimeout(SPe.Util.timeout[f]);
 	SPe.Util.timeout[f] = setTimeout(callback, ms);
 };
 
-SPe.Util.when = function (names, callback) {
+SPe.Util.when = function (lookup, callback) {
 	function check () { setTimeout(function () {
-		var ready = true, i, s, j, v;
-		for (i = 0; i < names.length; i++) {
-			s = names[i].split(".");
-			for (j = 0; j < s.length; j++) {
-				v = !j ? window[s[j]] : v[s[j]];
+		var ready = true;
+		if (SPe.type(lookup) === "array") {
+			var i, s, j, v;
+			for (i = 0; i < lookup.length; i++) {
+				s = lookup[i].split(".");
+				for (j = 0; j < s.length; j++) {
+					v = !j ? window[s[j]] : v[s[j]];
+				}
+				if (v === undefined) { ready = false; break; }
 			}
-			if (v === undefined) { ready = false; break; }
+		}
+		else {
+			if (!lookup()) { ready = false; }
 		}
 		if (ready) { callback(); } else { check(); }
 	}, 50); }

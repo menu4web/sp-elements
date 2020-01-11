@@ -1,4 +1,4 @@
-SPe.initDashboard = function () {
+SPe.initDashboard = function () { SPe.Util.when(["Chart"], function () {
 
 "use strict";
 
@@ -69,4 +69,4 @@ return dashboard;
 
 if (refDashboard) { SPe.Query.ready(retrieveMilestones); }
 
-};
+});};

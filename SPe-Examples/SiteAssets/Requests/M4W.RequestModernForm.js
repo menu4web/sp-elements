@@ -1,35 +1,41 @@
-SPe.initForm = function () {
+SPe.initForm = function () { SPe.Util.when(function () { return SPe.Form.elGetByText(document, "label", "Title"); }, function () {
 
 "use strict";
 
 // Elements
 
 var refForm = SPe.Form.get();
-var refEditAll = SPe.Form.elGetByText(refForm, "i", "Edit"); if (refEditAll) { refEditAll = SPe.Form.elGetParent(refEditAll, "button"); }
-var refCopyLink = SPe.Form.elGetByText(refForm, "i", "Copy link"); if (refCopyLink) { refCopyLink = SPe.Form.elGetParent(refCopyLink, "button"); }
-var refEditForm = SPe.Form.elGetByText(refForm, "i", "Edit Form"); if (refEditForm) { refEditForm = SPe.Form.elGetParent(refEditForm, "button"); }
-var refCustomize = SPe.Form.elGetByText(refForm, "i", "PowerApps"); if (refCustomize) { refCustomize = SPe.Form.elGetParent(refCustomize, "button"); }
 var refTitle = SPe.Form.elGetByText(refForm, "input", "Title");
 var refRequester = SPe.Form.elGetByText(refForm, "input", "Requester") || SPe.Form.elGetByText(refForm, "label", "Requester");
 var refEmail = SPe.Form.elGetByText(refForm, "input", "E-mail");
-var refNotes = SPe.Form.elGetByText(refForm, "label", "Notes"); refNotes = SPe.Form.elGetByClass(refNotes.parentNode, "textarea");
+var refNotes = SPe.Form.elGetByText(refForm, "textarea", "Notes");
 var refLocation = SPe.Form.elGetByText(refForm, "label", "Location");
 var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
 
 // Buttons
 
+SPe.Util.when(function () { return SPe.Form.elGetByText(document, "i", "PowerApps"); }, function () {
+
+var refEditAll = SPe.Form.elGetByText(refForm, "i", "Edit"); if (refEditAll) { refEditAll = SPe.Form.elGetParent(refEditAll, "button"); }
+var refCopyLink = SPe.Form.elGetByText(refForm, "i", "Copy link"); if (refCopyLink) { refCopyLink = SPe.Form.elGetParent(refCopyLink, "button"); }
+var refEditForm = SPe.Form.elGetByText(refForm, "i", "Edit Form"); if (refEditForm) { refEditForm = SPe.Form.elGetParent(refEditForm, "button"); }
+var refCustomize = SPe.Form.elGetByText(document, "i", "PowerApps"); if (refCustomize) { refCustomize = SPe.Form.elGetParent(refCustomize, "button"); }
 if (refEditAll) { SPe.hide(refEditAll); }
 if (refCopyLink) { SPe.hide(refCopyLink); }
 if (refEditForm) { SPe.hide(refEditForm); }
 if (refCustomize) { SPe.hide(refCustomize); }
 
+});
+
 // Mode
 
 var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
 
-if (mode === "new" || mode === "edit") {
-
 // Fields
+
+refForm.style.maxWidth = "649px";
+
+if (mode === "new" || mode === "edit") {
 
 if (mode === "new") {
 	SPe.Query.currentUserProperties(function (user) {
@@ -79,4 +85,4 @@ SPe.Form.divAdd(refStatus, hline);
 
 }
 
-};
+});};
