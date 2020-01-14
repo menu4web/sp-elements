@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/03/ProvisioningSchema">
-  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.11.1907.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
-  <pnp:Templates ID="CONTAINER-TEMPLATE-4E38A1A7CB694B80A15009057A5A98CE">
-    <pnp:ProvisioningTemplate ID="TEMPLATE-4E38A1A7CB694B80A15009057A5A98CE" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.16.1912.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-929F43D0046E44759FEB4CB4F09A0116">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-929F43D0046E44759FEB4CB4F09A0116" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
       <pnp:Lists>
         <pnp:ListInstance Title="News" Description="" DocumentTemplate="" TemplateType="103" Url="Lists/News" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-2062-426c-90bf-714c59600103" EnableAttachments="false" DefaultDisplayFormUrl="{site}/Lists/News/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/News/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/News/NewForm.aspx" ImageUrl="/_layouts/15/images/itlink.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
           <pnp:ContentTypeBindings>
@@ -10,7 +10,7 @@
             <pnp:ContentTypeBinding ContentTypeID="0x0120" />
           </pnp:ContentTypeBindings>
           <pnp:Views>
-            <View Name="{38561770-8D94-452F-9461-84D54698202A}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Links" Url="{site}/Lists/News/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/links.png?rev=47">
+            <View Name="{717481E0-701D-459D-8B6D-BB579879EAF9}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Links" Url="{site}/Lists/News/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/links.png?rev=47">
               <Query>
                 <OrderBy>
                   <FieldRef Name="Order" />
@@ -152,91 +152,91 @@
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Mobile Phone Roaming Rates</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/04/04 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-04-04 2:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
               <pnp:DataValue FieldName="Order">200</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">2_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">1_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Citrix and VPN Enhancement</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/03/22 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-03-22 2:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
               <pnp:DataValue FieldName="Order">300</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">3_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">2_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Important Changes to Your Group Retirement Program</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/01/07 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-01-07 4:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
               <pnp:DataValue FieldName="Order">400</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">4_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">3_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Payroll Calendar - Available Now!</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2018/12/10 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2018-12-10 4:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
               <pnp:DataValue FieldName="Order">500</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">5_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">4_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
-              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Professional Development, Memberships, and Fitness</pnp:DataValue>
+              <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,Memberships and Fitness</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2018/11/02 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2018-11-02 7:00:00 AM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Employee News</pnp:DataValue>
               <pnp:DataValue FieldName="Order">600</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">6_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">5_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Moves Toronto Headquarters</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/01/24 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-01-24 4:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
               <pnp:DataValue FieldName="Order">700</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">7_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">6_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Declares Third Quarter Dividend</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/03/07 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-03-07 4:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
               <pnp:DataValue FieldName="Order">800</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">8_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">7_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Reports Third Quarter Financial Results</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2018/10/05 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2018-10-05 2:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
               <pnp:DataValue FieldName="Order">900</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">9_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">8_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Announces Results of Special Meetings of Securityholders</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2018/10/03 7:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2018-10-03 2:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
               <pnp:DataValue FieldName="Order">1000</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">10_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">9_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
             <pnp:DataRow>
               <pnp:DataValue FieldName="URL">https://github.com/menu4web/sp-elements,M4W Announces Estimated Annual Reinvested Capital Gains</pnp:DataValue>
               <pnp:DataValue FieldName="Comments" />
-              <pnp:DataValue FieldName="PostDate">2019/11/12 8:00:00 AM</pnp:DataValue>
+              <pnp:DataValue FieldName="PostDate">2019-11-12 4:00:00 PM</pnp:DataValue>
               <pnp:DataValue FieldName="Category">Business Updates</pnp:DataValue>
               <pnp:DataValue FieldName="Order">1100</pnp:DataValue>
-              <pnp:DataValue FieldName="FileLeafRef">11_.000</pnp:DataValue>
+              <pnp:DataValue FieldName="FileLeafRef">10_.000</pnp:DataValue>
               <pnp:DataValue FieldName="MetaInfo" />
             </pnp:DataRow>
           </pnp:DataRows>

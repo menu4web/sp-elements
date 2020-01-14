@@ -1,10 +1,13 @@
-SPe.initForm = function () { SPe.Util.when(function () { return SPe.Form.elGetByText(document, "label", "Title"); }, function () {
+SPe.initForm = function () {
 
 "use strict";
 
 // Elements
 
 var refForm = SPe.Form.get();
+
+SPe.Util.when(function () { return !(!SPe.Form.elGetByText(refForm, "label", "Title") || !SPe.Form.elGetByText(refForm, "label", "Requester")); }, function () {
+
 var refTitle = SPe.Form.elGetByText(refForm, "input", "Title");
 var refRequester = SPe.Form.elGetByText(refForm, "input", "Requester") || SPe.Form.elGetByText(refForm, "label", "Requester");
 var refEmail = SPe.Form.elGetByText(refForm, "input", "E-mail");
@@ -14,18 +17,16 @@ var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
 
 // Buttons
 
-SPe.Util.when(function () { return SPe.Form.elGetByText(document, "i", "PowerApps"); }, function () {
+function hideButton (btn) {
+	SPe.Form.hide(function () {
+		var ref = SPe.Form.elGetByText(document, "i", btn);
+		if (ref) { ref = SPe.Form.elGetParent(ref, "button"); }
+		return ref;
+	});
+}
 
-var refEditAll = SPe.Form.elGetByText(refForm, "i", "Edit"); if (refEditAll) { refEditAll = SPe.Form.elGetParent(refEditAll, "button"); }
-var refCopyLink = SPe.Form.elGetByText(refForm, "i", "Copy link"); if (refCopyLink) { refCopyLink = SPe.Form.elGetParent(refCopyLink, "button"); }
-var refEditForm = SPe.Form.elGetByText(refForm, "i", "Edit Form"); if (refEditForm) { refEditForm = SPe.Form.elGetParent(refEditForm, "button"); }
-var refCustomize = SPe.Form.elGetByText(document, "i", "PowerApps"); if (refCustomize) { refCustomize = SPe.Form.elGetParent(refCustomize, "button"); }
-if (refEditAll) { SPe.hide(refEditAll); }
-if (refCopyLink) { SPe.hide(refCopyLink); }
-if (refEditForm) { SPe.hide(refEditForm); }
-if (refCustomize) { SPe.hide(refCustomize); }
-
-});
+hideButton("PowerApps");
+hideButton("Edit Form");
 
 // Mode
 
@@ -38,19 +39,23 @@ refForm.style.maxWidth = "649px";
 if (mode === "new" || mode === "edit") {
 
 if (mode === "new") {
-	SPe.Query.currentUserProperties(function (user) {
-		var name = user.get_displayName();
-		var account = user.get_accountName();
-		SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
-		SPe.Form.setField(refRequester, name);
-		SPe.Form.setField(refEmail, account.substring(account.lastIndexOf("|") + 1));
-	});
+
+SPe.Query.currentUserProperties(function (user) {
+	var name = user.get_displayName();
+	var account = user.get_accountName();
+	SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
+	SPe.Form.setField(refRequester, name);
+	SPe.Form.setField(refEmail, account.substring(account.lastIndexOf("|") + 1));
+});
+
 }
 
 if (mode === "edit") {
-	SPe.Form.elRewrite(refTitle);
-	SPe.Form.elRewrite(refRequester);
-	SPe.Form.elRewrite(refEmail, SPe.Form.textLinkify(refEmail.value));
+
+SPe.Form.elRewrite(refTitle);
+SPe.Form.elRewrite(refRequester);
+SPe.Form.elRewrite(refEmail, SPe.Form.textLinkify(refEmail.value));
+
 }
 
 refNotes.rows = "5";
@@ -83,6 +88,10 @@ SPe.Form.divAdd(refRequester, hline);
 SPe.Form.divAdd(refLocation, hline);
 SPe.Form.divAdd(refStatus, hline);
 
+hideButton("Edit all");
+
 }
 
-});};
+});
+
+};

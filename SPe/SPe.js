@@ -1,6 +1,6 @@
 if (!window.SPe) {
 
-var SPe = { version: "7.4", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.5", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -995,6 +995,10 @@ SPe.Form.ready = function (callback) {
 	base.addEventListener("load", function () { SPe.Query.ready(callback); }, false);
 };
 
+SPe.Form.hide = function (lookup) {
+	SPe.Util.when(lookup, function () { var ref = lookup(); SPe.hide(ref); });
+};
+
 SPe.Form.observe = function (callback) {
 	var observer = new MutationObserver(function (mutations) {
 		mutations.forEach(function (m) {
@@ -1584,13 +1588,14 @@ SPe.Util.functionName = function (f) {
 SPe.Util.timeout = [];
 
 SPe.Util.wait = function (callback, ms) {
-	ms = ms || 190;
+	ms = ms || 191;
 	var f = SPe.Util.functionName(callback) || "no-name";
 	clearTimeout(SPe.Util.timeout[f]);
 	SPe.Util.timeout[f] = setTimeout(callback, ms);
 };
 
 SPe.Util.when = function (lookup, callback) {
+	var c = 0;
 	function check () { setTimeout(function () {
 		var ready = true;
 		if (SPe.type(lookup) === "array") {
@@ -1606,8 +1611,8 @@ SPe.Util.when = function (lookup, callback) {
 		else {
 			if (!lookup()) { ready = false; }
 		}
-		if (ready) { callback(); } else { check(); }
-	}, 50); }
+		if (ready) { callback(); } else { if(c < 99) { c++; check(); } }
+	}, 77); }
 	check();
 };
 

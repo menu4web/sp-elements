@@ -1,6 +1,8 @@
-SPe.initTabs = function () { SPe.Util.when(function () { return document.getElementById("homeTabs"); }, function () {
+SPe.initTabs = function () { 
 
 "use strict";
+
+SPe.Util.when(function () { return document.getElementById("homeTabs"); }, function () {
 
 var color = "#d0d0d0";
 var style = {
@@ -47,7 +49,9 @@ onTabsQuerySucceeded = function (items) {
 
 SPe.Query.ready(loadTabs);
 
-});};
+});
+
+};
 
 SPe.initNews = function () {
 

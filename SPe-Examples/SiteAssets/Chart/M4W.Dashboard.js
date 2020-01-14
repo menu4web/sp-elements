@@ -1,6 +1,8 @@
-SPe.initDashboard = function () { SPe.Util.when(["Chart"], function () {
+SPe.initDashboard = function () {
 
 "use strict";
+
+SPe.Util.when(["Chart"], function () {
 
 var refDashboard = document.getElementById("dashboard");
 
@@ -69,4 +71,6 @@ return dashboard;
 
 if (refDashboard) { SPe.Query.ready(retrieveMilestones); }
 
-});};
+});
+
+};

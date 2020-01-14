@@ -1,8 +1,10 @@
 SPe.initSlidesFlag = false;
 
-SPe.initSlides = function () { SPe.Util.when(["jQuery", "$.fn.responsiveSlides"], function () {
+SPe.initSlides = function () {
 
 "use strict";
+
+SPe.Util.when(["jQuery", "$.fn.responsiveSlides"], function () {
 
 if (!SPe.initSlidesFlag) {
 
@@ -48,4 +50,6 @@ SPe.Query.ready(loadSlides);
 
 }
 
-});};
+});
+
+};
