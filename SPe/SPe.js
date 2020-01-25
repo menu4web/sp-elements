@@ -1,6 +1,6 @@
 if (!window.SPe) {
 
-var SPe = { version: "7.5", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.7", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -1000,14 +1000,17 @@ SPe.Form.hide = function (lookup) {
 };
 
 SPe.Form.observe = function (callback) {
-	var observer = new MutationObserver(function (mutations) {
-		mutations.forEach(function (m) {
-			if (SPe.has(m.target.className, "od-ListForm-topBar")) {
-				SPe.Util.wait(function formLoading () { callback(); });
-			}
+	function getDiv () { return document.querySelector("div.od-OverlayHost"); }
+	SPe.Util.when(getDiv, function () {
+		var observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (m) {
+				if (SPe.has(m.target.className, "od-ListForm-topBar")) {
+					SPe.Util.wait(function formLoading () { callback(); });
+				}
+			});
 		});
+		observer.observe(getDiv(), { attributes: false, childList: true, subtree: true });
 	});
-	observer.observe(SPe.Form.elGetByClass(document, "div", "od-OverlayHost"), { attributes: false, childList: true, subtree: true });
 };
 
 // List
@@ -1050,8 +1053,11 @@ SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(fun
 }, 50); } };
 
 SPe.List.listener = function (cols) {
-	SPe.List.customizer(cols);
-	document.querySelector("div.od-ItemContent-list").addEventListener("DOMNodeInserted", function () { SPe.List.customizer(cols); });
+	function getDiv () { return document.querySelector("div.od-ItemContent-list"); }
+	SPe.Util.when(getDiv, function () {
+		SPe.List.customizer(cols);
+		getDiv().addEventListener("DOMNodeInserted", function () { SPe.List.customizer(cols); });
+	});
 };
 
 // Query

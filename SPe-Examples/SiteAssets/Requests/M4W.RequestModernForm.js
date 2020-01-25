@@ -27,6 +27,8 @@ function hideButton (btn) {
 
 hideButton("PowerApps");
 hideButton("Edit Form");
+hideButton("Show/hide columns");
+
 
 // Mode
 
