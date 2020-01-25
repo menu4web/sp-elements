@@ -1,3 +1,5 @@
+/* slava naumenko (c) - https://github.com/menu4web/sp-elements */
+
 if (!window.SPe) {
 
 var SPe = { version: "7.7", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
