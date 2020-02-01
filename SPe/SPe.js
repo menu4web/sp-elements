@@ -2,7 +2,7 @@
 
 if (!window.SPe) {
 
-var SPe = { version: "7.7", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.9", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -15,6 +15,8 @@ SPe.nop = function () { return undefined; };
 SPe.has = function (s, c) { return s.indexOf(c) > -1; };
 
 SPe.path = function (path) { return SPe.has(_spPageContextInfo.serverRequestPath, path); };
+
+SPe.url = function (path) { return _spPageContextInfo.webServerRelativeUrl; };
 
 SPe.hide = function (ref) { ref.style.display = "none"; };
 
@@ -477,7 +479,7 @@ SPe.Form.preSaveValues = function () {
 	SPe.Form.preSaveTextareas.forEach(function (ref) {
 		var ctd = SPe.Form.elGetParent(ref, "td");
 		var r, tr, rhtml, d, td, cref;
-		var v, users, value = "";
+		var v, value = "";
 		var table = SPe.Form.elGetByClass(ctd, "table");
 		for (r = 0; r < table.rows.length; r++) {
 			tr = table.rows[r];
@@ -1076,6 +1078,12 @@ SPe.Query.context = function () {
 	return SP.ClientContext.get_current();
 };
 
+SPe.Query.url = function () {
+	var context = SPe.Query.context();
+	var url = context.get_url();
+	return url;
+};
+
 SPe.Query.items = function (list, caml, callback) {
 	var context = SPe.Query.context();
 	var query = new SP.CamlQuery(); query.set_viewXml(caml);
@@ -1213,13 +1221,12 @@ SPe.Rest.headers = function (options) {
 };
 
 SPe.Rest.currentUserProperties = function (callback) {
-	var url = "/_api/SP.UserProfiles.PeopleManager/GetMyProperties";
+	var url = SPe.url() + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties";
 	SPe.Ajax.post(url, "", SPe.Rest.headers(), callback);
 };
 
 SPe.Rest.createFolder = function (folder, callback) {
-	var context = SPe.Query.context();
-	var url = context.get_url() + "/_api/web/Folders";
+	var url = SPe.url() + "/_api/web/Folders";
 	var parameters = JSON.stringify({ "__metadata": { "type": "SP.Folder" }, "ServerRelativeUrl": folder });
 	SPe.Ajax.post(url, parameters, SPe.Rest.headers(), callback);
 };
@@ -1231,8 +1238,7 @@ SPe.Rest.addAttachments = function (listName, itemId, files, callback) {
 			var fileSource = files[i][0];
 			var fileData = files[i][1];
 			var fileName = fileSource.substring(fileSource.lastIndexOf("/")) || fileSource;
-			var context = SPe.Query.context();
-			var url = context.get_url() + "/_api/web/lists/getbytitle('" + listName + "')/items(" + itemId + ")/AttachmentFiles/add(FileName='" + fileName + "')";
+			var url = SPe.url() + "/_api/web/lists/getbytitle('" + listName + "')/items(" + itemId + ")/AttachmentFiles/add(FileName='" + fileName + "')";
 			SPe.Ajax.post(url, fileData, SPe.Rest.headers("digest"), function () { i++; addAttachment(); });
 		}
 		else {
@@ -1587,9 +1593,12 @@ SPe.Util.xmlProperties = function (xml) {
 };
 
 SPe.Util.functionName = function (f) {
-	var n = f.toString();
-	n = n.substr(9);
-	n = n.substr(0, n.indexOf("(")).trim();
+	var n = f.name;
+	if (!n) {
+		n = f.toString();
+		n = n.substr(9);
+		n = n.substr(0, n.indexOf("(")).trim();
+	}
 	return n;
 };
 
@@ -1619,7 +1628,7 @@ SPe.Util.when = function (lookup, callback) {
 		else {
 			if (!lookup()) { ready = false; }
 		}
-		if (ready) { callback(); } else { if(c < 99) { c++; check(); } }
+		if (ready) { callback(); } else { if (c < 99) { c++; check(); } }
 	}, 77); }
 	check();
 };
@@ -1631,7 +1640,8 @@ SPe.Util.do = function (fname) {
 		for (i = 0; i < s.length; i++) {
 			f = !i ? window[s[i]] : f[s[i]];
 		}
-		f();
+		Object.defineProperty(f, "name", { value: fname, writable: false });
+		SPe.Util.wait(f, 88);
 	});
 };
 

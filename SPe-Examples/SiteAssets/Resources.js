@@ -9,27 +9,67 @@ SPe.Util.load([
 
 if (SPe.path("/Home.aspx")) {
 
+// Slides
+
 SPe.Util.load([
-	"/sites/Test3/SiteAssets/Slides/M4W.Slides.js",
-	"/sites/Test3/SiteAssets/Tabs/M4W.HomeTabs.js",
-	"/sites/Test3/SiteAssets/Chart/M4W.Dashboard.js"
+	"/libs/jquery-3.4.1.min.js"
 ]);
 
+/*
+SystemJS.import("/libs/jquery-3.4.1.min.js");
+*/
+
+SPe.Util.when(["$"], function () {
+	SPe.Util.load([
+	"/sites/Test3/SiteAssets/Slides/responsiveslides.css",
+	"/sites/Test3/SiteAssets/Slides/responsiveslides.min.js"
+	]);
+});
+
+SPe.Util.when(["$", "$.fn.responsiveSlides"], function () {
+	SPe.Util.load([
+	"/sites/Test3/SiteAssets/Slides/M4W.Slides.css",
+	"/sites/Test3/SiteAssets/Slides/M4W.Slides.js"
+	]);
+});
+
 SPe.Util.do("SPe.initSlides");
+
+// Tabs
+
+SPe.Util.load([
+	"/sites/Test3/SiteAssets/Tabs/M4W.HomeTabs.js"
+]);
+
+/*
+SystemJS.import("/sites/Test3/SiteAssets/Tabs/M4W.HomeTabs.js");
+*/
+
 SPe.Util.do("SPe.initTabs");
+
+// Chart
+
+SystemJS.import("/libs/Chart.bundle.min.js");
+
+SPe.Util.when(["Chart"], function () {
+	SPe.Util.load([
+	"/sites/Test3/SiteAssets/Chart/M4W.Dashboard.js"
+	]);
+});
+
 SPe.Util.do("SPe.initDashboard");
 
 }
 
-// Request Form
+// Requests
 
 if (SPe.path("/Requests")) {
+
+// Request Form
 
 SPe.Util.load([
 	"/sites/Test3/SiteAssets/Requests/M4W.RequestModernForm.js"
 ]);
-
-}
 
 SPe.loadForm = function () { SPe.Util.do("SPe.initForm"); };
 
@@ -53,5 +93,7 @@ SPe.Util.load([
 ]);
 
 SPe.Util.do("SPe.initView");
+
+}
 
 }

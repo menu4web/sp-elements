@@ -1,16 +1,10 @@
-SPe.initSlidesFlag = false;
-
 SPe.initSlides = function () {
 
 "use strict";
 
-SPe.Util.when(["jQuery", "$.fn.responsiveSlides"], function () {
-
-if (!SPe.initSlidesFlag) {
-
-SPe.initSlidesFlag = true;
-
 var refSlider = document.getElementById("slider");
+
+if (refSlider && !refSlider.innerHTML) {
 
 var listTitle, listQuery, loadSlides, onSlidesQuerySucceeded;
 
@@ -41,15 +35,11 @@ onSlidesQuerySucceeded = function (items) {
 			timeout: 7000,
 			maxwidth: 1024
 		});
-
-		SPe.initSlidesFlag = false;
 	});
 };
 
 SPe.Query.ready(loadSlides);
 
 }
-
-});
 
 };

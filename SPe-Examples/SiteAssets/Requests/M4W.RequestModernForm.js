@@ -29,7 +29,6 @@ hideButton("PowerApps");
 hideButton("Edit Form");
 hideButton("Show/hide columns");
 
-
 // Mode
 
 var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
@@ -42,12 +41,23 @@ if (mode === "new" || mode === "edit") {
 
 if (mode === "new") {
 
+/*
 SPe.Query.currentUserProperties(function (user) {
 	var name = user.get_displayName();
 	var account = user.get_accountName();
 	SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
 	SPe.Form.setField(refRequester, name);
 	SPe.Form.setField(refEmail, account.substring(account.lastIndexOf("|") + 1));
+});
+*/
+
+SPe.Rest.currentUserProperties(function (u) {
+	var user = JSON.parse(u);
+	var name = SPe.Util.propertyValue(user, "DisplayName");
+	var email = SPe.Util.propertyValue(user, "Email");
+	SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
+	SPe.Form.setField(refRequester, name);
+	SPe.Form.setField(refEmail, email);
 });
 
 }

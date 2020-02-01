@@ -2,9 +2,9 @@ SPe.initDashboard = function () {
 
 "use strict";
 
-SPe.Util.when(["Chart"], function () {
-
 var refDashboard = document.getElementById("dashboard");
+
+if (refDashboard && !refDashboard.innerHTML) {
 
 var retrieveMilestones, onMilestonesQuerySucceeded;
 
@@ -27,7 +27,7 @@ while (enumerator.moveNext()) {
 		pending[stage] = 0;
 		completed[stage] = 0;
 	}
-	if (cdate) { completed[stage] += 1; } else { pending[stage] += 1; }
+	if (cdate) { completed[stage]++; } else { pending[stage]++; }
 }
 
 var countsToArray = function (o) {
@@ -69,8 +69,8 @@ return dashboard;
 
 };
 
-if (refDashboard) { SPe.Query.ready(retrieveMilestones); }
+SPe.Query.ready(retrieveMilestones);
 
-});
+}
 
 };

@@ -1,8 +1,10 @@
-SPe.initTabs = function () { 
+SPe.initTabs = function () {
 
 "use strict";
 
-SPe.Util.when(function () { return document.getElementById("homeTabs"); }, function () {
+var refTabs = document.getElementById("homeTabs");
+
+if (refTabs && !refTabs.innerHTML) {
 
 var color = "#d0d0d0";
 var style = {
@@ -22,7 +24,7 @@ loadTabs = function () { SPe.Query.items(listTitle, listQuery, onTabsQuerySuccee
 
 onTabsQuerySucceeded = function (items) {
 	var enumerator = items.getEnumerator();
-	var table = document.getElementById("homeTabs");
+	var table = refTabs;
 	table.style.borderBottom = "1px solid " + color;
 	var i = 0; var tabs = [];
 	var item, header, body, r, c;
@@ -38,7 +40,7 @@ onTabsQuerySucceeded = function (items) {
 		c.style.borderRight = "1px solid " + color;
 		c.innerHTML = body;
 
-		i += 1;
+		i ++;
 		tabs[i] = [header, [0, i]];
 	}
 
@@ -49,7 +51,7 @@ onTabsQuerySucceeded = function (items) {
 
 SPe.Query.ready(loadTabs);
 
-});
+}
 
 };
 
