@@ -8,4 +8,3 @@ To install SPe examples:
 6. Tabs example link ~/SiteAssets/Tabs/tabs.html;
 7. Chart example link ~/SiteAssets/Chart/dashboard.html;
 8. Slides example link ~/SiteAssets/Slides/show.html.
-33
