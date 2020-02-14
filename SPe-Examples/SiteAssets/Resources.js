@@ -11,29 +11,19 @@ if (SPe.path("/Home.aspx")) {
 
 // Slides
 
+require(["/libs/jquery-3.4.1.min.js"], function () {
+require(["/sites/Test3/SiteAssets/Slides/responsiveslides.min.js"], function () {
+
 SPe.Util.load([
-	"/libs/jquery-3.4.1.min.js"
-]);
-
-/*
-SystemJS.import("/libs/jquery-3.4.1.min.js");
-*/
-
-SPe.Util.when(["$"], function () {
-	SPe.Util.load([
 	"/sites/Test3/SiteAssets/Slides/responsiveslides.css",
-	"/sites/Test3/SiteAssets/Slides/responsiveslides.min.js"
-	]);
-});
-
-SPe.Util.when(["$", "$.fn.responsiveSlides"], function () {
-	SPe.Util.load([
 	"/sites/Test3/SiteAssets/Slides/M4W.Slides.css",
 	"/sites/Test3/SiteAssets/Slides/M4W.Slides.js"
-	]);
-});
+]);
 
 SPe.Util.do("SPe.initSlides");
+
+});
+});
 
 // Tabs
 
@@ -41,23 +31,19 @@ SPe.Util.load([
 	"/sites/Test3/SiteAssets/Tabs/M4W.HomeTabs.js"
 ]);
 
-/*
-SystemJS.import("/sites/Test3/SiteAssets/Tabs/M4W.HomeTabs.js");
-*/
-
 SPe.Util.do("SPe.initTabs");
 
 // Chart
 
-SystemJS.import("/libs/Chart.bundle.min.js");
+require(["/libs/Chart.bundle.min.js"], function () {
 
-SPe.Util.when(["Chart"], function () {
-	SPe.Util.load([
+SPe.Util.load([
 	"/sites/Test3/SiteAssets/Chart/M4W.Dashboard.js"
-	]);
-});
+]);
 
 SPe.Util.do("SPe.initDashboard");
+
+});
 
 }
 
@@ -71,16 +57,16 @@ SPe.Util.load([
 	"/sites/Test3/SiteAssets/Requests/M4W.RequestModernForm.js"
 ]);
 
-SPe.loadForm = function () { SPe.Util.do("SPe.initForm"); };
+SPe.loadRequestForm = function () { SPe.Util.do("SPe.initRequestForm"); };
 
 if (SPe.path("/Requests/AllItems.aspx")) {
 
-SPe.Form.observe(SPe.loadForm);
+SPe.Form.observe(SPe.loadRequestForm);
 
 }
 else {
 
-SPe.Util.wait(SPe.loadForm);
+SPe.Util.wait(SPe.loadRequestForm);
 
 }
 
@@ -92,7 +78,32 @@ SPe.Util.load([
 	"/sites/Test3/SiteAssets/Requests/M4W.RequestsModernView.js"
 ]);
 
-SPe.Util.do("SPe.initView");
+SPe.Util.do("SPe.initRequestView");
+
+}
+
+}
+
+// Claims
+
+if (SPe.path("/Claims")) {
+
+// Claim Form
+
+SPe.Util.load([
+	"/sites/Test3/SiteAssets/Claims/M4W.ClaimModernForm.js"
+]);
+
+SPe.loadClaimForm = function () { SPe.Util.do("SPe.initClaimForm"); };
+
+if (SPe.path("/Claims/AllItems.aspx")) {
+
+SPe.Form.observe(SPe.loadClaimForm);
+
+}
+else {
+
+SPe.Util.wait(SPe.loadClaimForm);
 
 }
 

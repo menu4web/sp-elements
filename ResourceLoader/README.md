@@ -1,1 +1,2 @@
-SPFx extension. Load SP.js, SPe.js and Resources.js.
+SPFx extension. Load SPe.js and Resources.js.
+

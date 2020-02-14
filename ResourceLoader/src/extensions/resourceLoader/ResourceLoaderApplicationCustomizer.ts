@@ -22,41 +22,30 @@ export interface IResourceLoaderApplicationCustomizerProperties {
 export default class ResourceLoaderApplicationCustomizer
   extends BaseApplicationCustomizer<IResourceLoaderApplicationCustomizerProperties> {
 
-  @override
-  public onInit(): Promise<void> {
-
-    let w = (window as any);
-    if (!w._spPageContextInfo) {
-      w._spPageContextInfo = this.context.pageContext.legacyPageContext;
-    }
-
-    if (!document.getElementById('__REQUESTDIGEST')) {
-      let digestValue = this.context.pageContext.legacyPageContext.formDigestValue;
-      let requestDigestInput: Element = document.createElement('input');
-      requestDigestInput.setAttribute('type', 'hidden');
-      requestDigestInput.setAttribute('name', '__REQUESTDIGEST');
-      requestDigestInput.setAttribute('id', '__REQUESTDIGEST');
-      requestDigestInput.setAttribute('value', digestValue);
-      document.body.appendChild(requestDigestInput);
-    }
-
-    SPComponentLoader.loadScript('/_layouts/15/init.js', { globalExportsName: '$_global_init' })
-    .then((): Promise<{}> => {
-      return SPComponentLoader.loadScript('/_layouts/15/MicrosoftAjax.js', { globalExportsName: 'Sys' });
-    })
-    .then((): Promise<{}> => {
-      return SPComponentLoader.loadScript('/_layouts/15/SP.Runtime.js', { globalExportsName: 'g_all_modules' });
-    })
-    .then((): Promise<{}> => {
-      return SPComponentLoader.loadScript('/_layouts/15/SP.js', { globalExportsName: 'SP' });
-    })
-    .then((): Promise<{}> => {
-      return SPComponentLoader.loadScript('/libs/SPe.js', { globalExportsName: 'SPe' });
-    })
-    .then((): void => {
-      SPComponentLoader.loadScript(this.context.pageContext.web.absoluteUrl + '/SiteAssets/Resources.js', { globalExportsName: 'SPe' });
-    });
-
-    return Promise.resolve();
-  }
+    @override
+    public onInit(): Promise<void> {
+  
+      let w = (window as any);
+      if (!w._spPageContextInfo) {
+        w._spPageContextInfo = this.context.pageContext.legacyPageContext;
+      }
+  
+      if (!document.getElementById('__REQUESTDIGEST')) {
+        let digestValue = this.context.pageContext.legacyPageContext.formDigestValue;
+        let requestDigestInput: Element = document.createElement('input');
+        requestDigestInput.setAttribute('type', 'hidden');
+        requestDigestInput.setAttribute('name', '__REQUESTDIGEST');
+        requestDigestInput.setAttribute('id', '__REQUESTDIGEST');
+        requestDigestInput.setAttribute('value', digestValue);
+        document.body.appendChild(requestDigestInput);
+      }
+  
+      SPComponentLoader.loadScript('/libs/SPe.js', { globalExportsName: 'SPe' })
+      .then((): void => {
+        SPComponentLoader.loadScript(this.context.pageContext.web.absoluteUrl + '/SiteAssets/Resources.js', { globalExportsName: 'SPe' });
+      });
+  
+      return Promise.resolve();
+      
+    }   
 }

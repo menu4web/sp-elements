@@ -1,4 +1,4 @@
-SPe.initForm = function () {
+SPe.initRequestForm = function () {
 
 "use strict";
 
@@ -17,17 +17,9 @@ var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
 
 // Buttons
 
-function hideButton (btn) {
-	SPe.Form.hide(function () {
-		var ref = SPe.Form.elGetByText(document, "i", btn);
-		if (ref) { ref = SPe.Form.elGetParent(ref, "button"); }
-		return ref;
-	});
-}
-
-hideButton("PowerApps");
-hideButton("Edit Form");
-hideButton("Show/hide columns");
+SPe.Form.buttonHide("PowerApps");
+SPe.Form.buttonHide("Edit form");
+SPe.Form.buttonHide("Show");
 
 // Mode
 
@@ -41,18 +33,7 @@ if (mode === "new" || mode === "edit") {
 
 if (mode === "new") {
 
-/*
-SPe.Query.currentUserProperties(function (user) {
-	var name = user.get_displayName();
-	var account = user.get_accountName();
-	SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
-	SPe.Form.setField(refRequester, name);
-	SPe.Form.setField(refEmail, account.substring(account.lastIndexOf("|") + 1));
-});
-*/
-
-SPe.Rest.currentUserProperties(function (u) {
-	var user = JSON.parse(u);
+SPe.Rest.currentUserProperties(function (user) {
 	var name = SPe.Util.propertyValue(user, "DisplayName");
 	var email = SPe.Util.propertyValue(user, "Email");
 	SPe.Form.setField(refTitle, name.substring(0, name.indexOf(" ")) + "'s Request");
@@ -100,7 +81,7 @@ SPe.Form.divAdd(refRequester, hline);
 SPe.Form.divAdd(refLocation, hline);
 SPe.Form.divAdd(refStatus, hline);
 
-hideButton("Edit all");
+SPe.Form.buttonHide("Edit all");
 
 }
 

@@ -32,7 +32,7 @@ SPe.statusColor = function (e) {
 	}
 };
 
-SPe.initView = function () {
+SPe.initRequestView = function () {
 	SPe.List.listener({
 		"E-mail": SPe.emailLinkify,
 		"Status": SPe.statusColor

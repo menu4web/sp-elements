@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=3.16.1912.0, Culture=neutral, PublicKeyToken=5e633289e95c321a" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-8199A2BE529B41C885E571E2873E5CF0">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-8199A2BE529B41C885E571E2873E5CF0" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="Claims" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/Claims" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/Claims/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/Claims/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/Claims/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{7AD85CF2-9D00-4A76-AE5A-1C4BAF9B829D}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/Claims/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Employee" />
+                <FieldRef Name="Office" />
+                <FieldRef Name="Department" />
+                <FieldRef Name="Checklist" />
+                <FieldRef Name="TotalCost" />
+                <FieldRef Name="Currency" />
+                <FieldRef Name="Status" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="User" DisplayName="Employee" List="UserInfo" Required="TRUE" EnforceUniqueValues="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0" ID="{addb36ad-9de8-4ee5-8884-812a65bb24b7}" SourceID="{{listid:Claims}}" StaticName="Employee" Name="Employee" ColName="int1" RowOrdinal="0" Group="" Version="1" />
+            <Field Type="Text" DisplayName="Office" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{b7642607-2ed9-4309-9a65-649ad52f9d60}" SourceID="{{listid:Claims}}" StaticName="Office" Name="Office" ColName="nvarchar4" RowOrdinal="0" />
+            <Field Type="Text" DisplayName="Department" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{23608a3a-e590-4caf-adab-599edbf16cbd}" SourceID="{{listid:Claims}}" StaticName="Department" Name="Department" ColName="nvarchar5" RowOrdinal="0" />
+            <Field Type="MultiChoice" DisplayName="Checklist" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" FillInChoice="FALSE" ID="{507cffca-da48-4a6e-ba2e-712e6958a277}" SourceID="{{listid:Claims}}" StaticName="Checklist" Name="Checklist" ColName="ntext2" RowOrdinal="0" CustomFormatter="" Version="1">
+              <CHOICES>
+                <CHOICE>This reimbursement is for myself</CHOICE>
+                <CHOICE>This reimbursement is for my eligible dependent(s)</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Note" DisplayName="My Information" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" ID="{ca0b0f42-c0f3-4051-8c90-4e7292388c63}" SourceID="{{listid:Claims}}" StaticName="MyInformation" Name="MyInformation" ColName="ntext3" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" Version="2" />
+            <Field Type="Note" DisplayName="Dependent(s) Information" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="4" RichText="FALSE" Sortable="FALSE" ID="{4e5ee9f6-3ee4-45f3-87ac-58a5897aae7e}" SourceID="{{listid:Claims}}" StaticName="DependentInformation" Name="DependentInformation" ColName="ntext4" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="FALSE" Version="1" />
+            <Field Name="TotalCost" FromBaseType="FALSE" Type="Currency" DisplayName="Total Cost" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" LCID="1033" ID="{65748682-f57a-48a0-8845-64b9ce28de64}" Version="3" StaticName="TotalCost" SourceID="{{listid:Claims}}" ColName="float1" RowOrdinal="0" />
+            <Field Type="Choice" DisplayName="Currency" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{7bb7349d-da85-4d9b-a61d-150c7d079970}" SourceID="{{listid:Claims}}" StaticName="Currency" Name="Currency" ColName="nvarchar7" RowOrdinal="0" CustomFormatter="" Version="1">
+              <CHOICES>
+                <CHOICE>$ (CAD)</CHOICE>
+                <CHOICE>$ (USD)</CHOICE>
+                <CHOICE>€ (EUR)</CHOICE>
+                <CHOICE>£ (GBP)</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Choice" DisplayName="Status" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Dropdown" FillInChoice="FALSE" ID="{adaa3a68-fb67-4109-a4ac-2dd2f9811431}" SourceID="{{listid:Claims}}" StaticName="Status" Name="Status" ColName="nvarchar8" RowOrdinal="0" CustomFormatter="" Version="1">
+              <Default>Submitted</Default>
+              <CHOICES>
+                <CHOICE>Submitted</CHOICE>
+                <CHOICE>Returned</CHOICE>
+                <CHOICE>Cancelled</CHOICE>
+                <CHOICE>Processed for Payment</CHOICE>
+              </CHOICES>
+            </Field>
+            <Field Type="Note" DisplayName="Claim Comment" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="5" RichText="FALSE" Sortable="FALSE" ID="{c3fc4ea7-4f2f-4058-9794-aff669dac198}" SourceID="{{listid:Claims}}" StaticName="ClaimComment" Name="ClaimComment" ColName="ntext5" RowOrdinal="0" CustomFormatter="" RestrictedMode="TRUE" RichTextMode="Compatible" IsolateStyles="FALSE" AppendOnly="TRUE" Version="4" />
+          </pnp:Fields>
+          <pnp:Security>
+            <pnp:BreakRoleInheritance CopyRoleAssignments="false" ClearSubscopes="false">
+              <pnp:RoleAssignment Principal="{associatedownergroupid}" RoleDefinition="Full Control" />
+              <pnp:RoleAssignment Principal="{associatedvisitorgroupid}" RoleDefinition="Contribute" />
+              <pnp:RoleAssignment Principal="{associatedmembergroupid}" RoleDefinition="Edit" />
+            </pnp:BreakRoleInheritance>
+          </pnp:Security>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://0-canadaeast1.pushp.svc.ms/notifications?token=w3-d5d4ba8d-83ac-478b-a1c8-cd9e8c081903" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

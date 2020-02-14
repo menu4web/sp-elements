@@ -1,6 +1,6 @@
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneCheckbox } from '@microsoft/sp-property-pane';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import { SPHttpClient } from "@microsoft/sp-http";  
@@ -9,6 +9,8 @@ import * as strings from 'ContentLoaderWebPartStrings';
 
 export interface IContentLoaderWebPartProps {
   url: string;
+  loadPC: boolean;
+  loadSP: boolean;
 }
 
 export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContentLoaderWebPartProps> {
@@ -99,6 +101,40 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
 
   public render(): void {
     if (this.properties.url) {
+
+      let w = (window as any);
+
+      if (this.properties.loadPC) {
+        if (!w._spPageContextInfo) {
+          w._spPageContextInfo = this.context.pageContext.legacyPageContext;
+        }
+
+        if (!document.getElementById('__REQUESTDIGEST')) {
+          let digestValue = this.context.pageContext.legacyPageContext.formDigestValue;
+          let requestDigestInput: Element = document.createElement('input');
+          requestDigestInput.setAttribute('type', 'hidden');
+          requestDigestInput.setAttribute('name', '__REQUESTDIGEST');
+          requestDigestInput.setAttribute('id', '__REQUESTDIGEST');
+          requestDigestInput.setAttribute('value', digestValue);
+          document.body.appendChild(requestDigestInput);
+        }
+      }
+
+      if (this.properties.loadSP) {
+        if (!w.SP) {
+          SPComponentLoader.loadScript('/_layouts/15/init.js', { globalExportsName: '$_global_init' })
+          .then((): Promise<{}> => {
+            return SPComponentLoader.loadScript('/_layouts/15/MicrosoftAjax.js', { globalExportsName: 'Sys' });
+          })
+          .then((): Promise<{}> => {
+            return SPComponentLoader.loadScript('/_layouts/15/SP.Runtime.js', { globalExportsName: 'g_all_modules' });
+          })
+          .then((): void => {
+            SPComponentLoader.loadScript('/_layouts/15/SP.js', { globalExportsName: 'SP' });
+          });
+        }
+      }
+
       this.context.spHttpClient.get(`${escape(this.properties.url)}`, SPHttpClient.configurations.v1)  
       .then((response) => {
         return response.text();
@@ -111,6 +147,7 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
     else {
       this.domElement.innerHTML = 'Edit this web part and provide content URL.';
     }
+  
   }
 
   protected get dataVersion(): Version {
@@ -129,6 +166,14 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
               groupFields: [
                 PropertyPaneTextField('url', {
                   label: 'URL'
+                }),
+                PropertyPaneCheckbox('loadPC', {
+                  text: 'Load page context information',
+                  checked: true
+                }),
+                PropertyPaneCheckbox('loadSP', {
+                  text: 'Load SP.js and its dependencies',
+                  checked: true
                 })
               ]
             }

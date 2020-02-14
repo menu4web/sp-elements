@@ -7,7 +7,7 @@
     "features": [
       {
         "title": "Resource Loader",
-        "description": "Load SP.js, SPe.js and Resources.js.",
+        "description": "Load SPe.js and Resources.js.",
         "id": "9e24c6f0-be3b-4d08-8303-58bc7ecfdba1",
         "version": "1.0.0.0",
         "assets": {

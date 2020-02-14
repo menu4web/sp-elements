@@ -2,7 +2,7 @@
 
 if (!window.SPe) {
 
-var SPe = { version: "7.9", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.11", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -308,7 +308,7 @@ SPe.Form.elGetParent = function (el, tagName, txtContains) {
 SPe.Form.elVisible = function (ref, display) {
 	if (display === undefined || display === true) { display = ""; }
 	if (display === false) { display = "none"; }
-	var p = SPe.Form.elGetParent(ref, "tr") || SPe.Form.elGetParent(ref, "div", "ReactFieldEditor");
+	var p = SPe.Form.elGetParent(ref, "tr") || SPe.Form.elGetParent(ref, "div", "clientFormField");
 	p.style.display = display;
 };
 
@@ -337,7 +337,7 @@ SPe.Form.elRewrite = function (ref, rval) {
 	if (ref.type === "textarea") { mode = "textarea"; }
 	if (ref.type === "select-one") { mode = "select"; }
 	if (SPe.has(ref.id, "DateTimeFieldDate")) { mode = "date"; }
-	if (SPe.has(ref.id, "ClientPeoplePicker")) { mode = "user"; }
+	if (SPe.has(ref.id, "ClientPeoplePicker") || SPe.has(ref.className, "pickerInput")) { mode = "user"; }
 	if (SPe.has(ref.id, "MultiChoiceTable")) { mode = "checkboxes"; }
 	if (SPe.has(ref.className, "taxonomy")) { mode = "taxonomy"; }
 
@@ -362,10 +362,20 @@ SPe.Form.elRewrite = function (ref, rval) {
 		case "user":
 			ctr = ref.parentNode;
 			input = SPe.Form.elGet(ctr, "input", "HiddenInput");
-			users = JSON.parse(input.value);
-			users.forEach(function (user) {
-				val += ", " + user.DisplayText;
-			});
+			if (input) {
+				users = JSON.parse(input.value);
+				users.forEach(function (user) {
+					val += ", " + user.DisplayText;
+				});
+			}
+			else {
+				ctr = SPe.Form.elGetParent(ref, "div", "ReactFieldEditor-Picker");
+				input = SPe.Form.elGetParent(ctr, "div", "clientFormField");
+				users = input.querySelectorAll("div.ms-Persona-primaryText");
+				for (i = 0; i < users.length; i++) {
+					val += ", " + users[i].innerText;
+				}
+			}
 			val = val.substring(2);
 			break;
 		case "checkboxes":
@@ -392,7 +402,7 @@ SPe.Form.elRewrite = function (ref, rval) {
 	SPe.hide(ctr);
 	var desc = SPe.Form.elGetByClass(p, "span", "ms-metadata"); if (desc) { SPe.hide(desc); }
 	var span = document.createElement("span");
-	if (SPe.has(SPe.type(p), "div")) { span.style.padding = "6px 12px 1px 12px"; }
+	if (SPe.has(SPe.type(p), "div")) { span.style.padding = "6px 12px 1px 12px";  span.style.fontSize = "14px"; }
 	span.innerHTML = val;
 	p.insertBefore(span, p.firstChild);
 };
@@ -400,9 +410,22 @@ SPe.Form.elRewrite = function (ref, rval) {
 SPe.Form.setField = function (ref, val) {
 	var e = document.createEvent("Event");
 	e.initEvent("input", true, true);
+	ref.focus();
 	ref.value = val;
 	ref.dispatchEvent(e);
-	ref.focus(); ref.blur();
+	ref.blur();
+};
+
+SPe.Form.setPersonField = function (ref, val) {
+	SPe.Form.setField(ref, val);
+	SPe.Util.wait(function setPerson () {
+		ref.focus();
+		function sug () { return document.getElementById("sug-0"); }
+		SPe.Util.when(sug, function () {
+			SPe.Form.elGetByText(sug(), "button", "ms-Suggestions").click();
+			ref.blur();
+		});
+	});
 };
 
 SPe.Form.preSaveTextareas = [];
@@ -411,9 +434,12 @@ SPe.Form.textareaReplace = function (ref, cnt) {
 	if (!SPe.has(SPe.Form.preSaveTextareas, ref)) {
 		SPe.Form.preSaveTextareas.push(ref);
 		SPe.hide(ref.parentNode);
-		var td = SPe.Form.elGetParent(ref, "td");
-		var span = document.createElement("span"); span.innerHTML = cnt.innerHTML; cnt.parentNode.removeChild(cnt);
-		var el = td.insertBefore(span, td.firstChild);
+		var p = SPe.Form.elGetParent(ref, "td") || SPe.Form.elGetParent(ref, "div", "wrapper");
+		var span = document.createElement("span");
+		var isstr = SPe.type(cnt) === "string";
+		span.innerHTML = isstr ? cnt : cnt.innerHTML;
+		if (!isstr) { cnt.parentNode.removeChild(cnt); }
+		var el = p.insertBefore(span, p.firstChild);
 		if (ref.value) {
 			if (SPe.has(el.innerHTML, "rowDuplicate")) {
 				var vals = ref.value.split("\n");
@@ -437,8 +463,8 @@ SPe.Form.textareaValues = function (ref) {
 	if (ref.value) {
 		var vals = ref.value.split("\n");
 		var n = 0;
-		var ctd = SPe.Form.elGetParent(ref, "td");
-		var table = SPe.Form.elGetByClass(ctd, "table");
+		var p = SPe.Form.elGetParent(ref, "td") || SPe.Form.elGetParent(ref, "div", "wrapper");
+		var table = SPe.Form.elGetByClass(p, "table");
 		var r, tr, rhtml, d, td, v, cref, isdiv;
 		for (r = 0; r < table.rows.length; r++) {
 			tr = table.rows[r];
@@ -477,10 +503,10 @@ SPe.Form.preSaveValues = function () {
 		return e;
 	}
 	SPe.Form.preSaveTextareas.forEach(function (ref) {
-		var ctd = SPe.Form.elGetParent(ref, "td");
+		var p = SPe.Form.elGetParent(ref, "td") || SPe.Form.elGetParent(ref, "div", "wrapper");
 		var r, tr, rhtml, d, td, cref;
 		var v, value = "";
-		var table = SPe.Form.elGetByClass(ctd, "table");
+		var table = SPe.Form.elGetByClass(p, "table");
 		for (r = 0; r < table.rows.length; r++) {
 			tr = table.rows[r];
 			rhtml = tr.innerHTML;
@@ -502,7 +528,7 @@ SPe.Form.preSaveValues = function () {
 		value = value.replace(/\n;+/g, "");
 		if (value) {
 			value = value.substring(1);
-			ref.value = value;
+			SPe.Form.setField(ref, value);
 		}
 	});
 	return true;
@@ -685,13 +711,11 @@ SPe.Form.textGroom = function (txt) {
 };
 
 SPe.Form.commentsGroom = function (ref, style) {
-	style = style || "border-top: 1px solid #c6c6c6;";
-	if (ref.parentNode.id !== "SPFieldNote" && ref.parentNode.parentNode.id !== "SPFieldNote") {
-		var div = document.createElement("div"); div.innerHTML = "<br>";
-		ref.insertBefore(div, ref.firstChild);
-	}
+	style = style || "border-top: 1px solid #cdcdcd";
+	var p = SPe.Form.elGetParent(ref, "td", "SPFieldNote");
+	var dbr = p && p.id ? "" : "<div><br></div>";
 	var divHtml = ref.innerHTML;
-	var newHtml = divHtml.replace(/>\):/g, ">):<div style='" + style + "'><br></div>");
+	var newHtml = dbr + divHtml.replace(/<\/div>/g, "</div><div><br></div>").replace(/>\):/g, ">):<div style='" + style + "'><br></div>");
 	ref.innerHTML = SPe.Form.textGroom(newHtml);
 };
 
@@ -808,10 +832,12 @@ SPe.Form.dialogHandler = function (f) {
 	var div = SPe.Form.elGet(document, "div", "s4-workspace");
 	if (div) { div.style.overflow = "hidden"; }
 	if (f) { f(); }
-	SP.SOD.executeOrDelayUntilScriptLoaded(function () {
-		var dlg = SP.UI.ModalDialog.get_childDialog();
-		if (dlg) { dlg.autoSize(); }
-	}, "SP.UI.Dialog.js");
+	if (window.SP) {
+		SP.SOD.executeOrDelayUntilScriptLoaded(function () {
+			var dlg = SP.UI.ModalDialog.get_childDialog();
+			if (dlg) { dlg.autoSize(); }
+		}, "SP.UI.Dialog.js");
+	}
 };
 
 SPe.Form.dialogRefreshPage = function (result) {
@@ -1001,6 +1027,14 @@ SPe.Form.ready = function (callback) {
 
 SPe.Form.hide = function (lookup) {
 	SPe.Util.when(lookup, function () { var ref = lookup(); SPe.hide(ref); });
+};
+
+SPe.Form.buttonHide = function (btxt) {
+	SPe.Form.hide(function () {
+		var ref = SPe.Form.elGetByText(document, "i", btxt);
+		if (ref) { ref = SPe.Form.elGetParent(ref, "button"); }
+		return ref;
+	});
 };
 
 SPe.Form.observe = function (callback) {
@@ -1204,6 +1238,15 @@ SPe.Query.currentUserInGroup = function (groupName, callback) {
 
 // Rest
 
+SPe.Rest.digest = function (callback) {
+	var url = SPe.url() + "/_api/ContextInfo";
+	SPe.Ajax.post(url, "", SPe.Rest.headers("json"), function (d) {
+		var data = JSON.parse(d);
+		var formDigest = SPe.Util.propertyValue(data, "FormDigestValue");
+		callback(formDigest);
+	});
+};
+
 SPe.Rest.headers = function (options) {
 	var headers = {};
 
@@ -1222,7 +1265,14 @@ SPe.Rest.headers = function (options) {
 
 SPe.Rest.currentUserProperties = function (callback) {
 	var url = SPe.url() + "/_api/SP.UserProfiles.PeopleManager/GetMyProperties";
-	SPe.Ajax.post(url, "", SPe.Rest.headers(), callback);
+	SPe.Rest.digest(function (formDigest) {
+		var headers = SPe.Rest.headers("json");
+		headers["X-RequestDigest"] = formDigest;
+		SPe.Ajax.post(url, "", headers, function (u) {
+			var user = JSON.parse(u);
+			callback(user);
+		});
+	});
 };
 
 SPe.Rest.createFolder = function (folder, callback) {
@@ -1382,12 +1432,13 @@ SPe.Tabs.go = true;
 
 SPe.Tabs.msgMonitor = function (refs, tid) {
 	refs.forEach(function (ref) {
-		var p = SPe.Form.elGetParent(ref, "td");
+		var p = SPe.Form.elGetParent(ref, "td") || SPe.Form.elGetParent(ref, "div", "clientFormField");
+		var pf = SPe.Form.elGetParent(ref, "table") || SPe.Form.elGetParent(ref, "div", "ReactClientForm");
 		SPe.Form.elMonitor(p, function () {
 			if (SPe.has(p.innerHTML, "blank")) {
 				if (SPe.Tabs.go) {
 					SPe.Tabs.go = false;
-					SPe.Tabs.click(SPe.Form.elGet(SPe.Form.elGetParent(ref, "table"), "td", tid));
+					SPe.Tabs.click(SPe.Form.elGet(pf, "td", tid));
 					setTimeout(function () { SPe.Tabs.go = true; }, 50);
 				}
 			}
@@ -1527,16 +1578,21 @@ SPe.Util.clone = function (obj) {
 SPe.Util.propertyValue = function (obj, key) {
 	var val = null;
 	function getValue (obj, key) {
-		var k, o;
+		var k, o, i;
 		for (k in obj) {
 			if (obj.hasOwnProperty(k)) {
 				o = obj[k];
 				if (SPe.type(o) === "object") {
-					if (!val && !o.get_web) { getValue(o, key); }
+					if (val === null && !o.get_web) { getValue(o, key); }
+				}
+				else if (SPe.type(o) === "array") {
+					for (i = 0; i < o.length; i++) {
+						if (val === null) { getValue(o[i], key); }
+					}
 				}
 				else {
 					if (obj.Key === key || k === key) {
-						val = obj.Value || o;
+						val = obj.Value; if (val === undefined) { val = o; }
 						break;
 					}
 				}
@@ -1629,7 +1685,7 @@ SPe.Util.when = function (lookup, callback) {
 			if (!lookup()) { ready = false; }
 		}
 		if (ready) { callback(); } else { if (c < 99) { c++; check(); } }
-	}, 77); }
+	}, 55); }
 	check();
 };
 
