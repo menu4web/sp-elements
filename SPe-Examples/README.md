@@ -6,4 +6,5 @@ To install SPe examples:
 4. /Lists - create content lists under a test site by running applyListTemplate.ps1;
 5. Add ContenLoader web part to a test page;
 6. Tabs example link ~/SiteAssets/Tabs/tabs.html;
-7. Chart example link ~/SiteAssets/Chart/dashboard.html.
+7. Chart example link ~/SiteAssets/Chart/dashboard.html;
+8. Slides example link ~/SiteAssets/Slides/show.html.
