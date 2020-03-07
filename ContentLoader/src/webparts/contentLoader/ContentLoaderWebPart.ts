@@ -3,9 +3,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneCheckbox } from '@microsoft/sp-property-pane';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { SPComponentLoader } from '@microsoft/sp-loader';
-import { SPHttpClient } from "@microsoft/sp-http";  
-
-import * as strings from 'ContentLoaderWebPartStrings';
+import { SPHttpClient } from "@microsoft/sp-http";
 
 export interface IContentLoaderWebPartProps {
   url: string;
@@ -139,8 +137,8 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
       .then((response) => {
         return response.text();
       })
-      .then((value) => {
-        this.domElement.innerHTML = value;
+      .then((responseText) => {
+        this.domElement.innerHTML = responseText;
         this.executeScript(this.domElement);
       });
     }
@@ -169,11 +167,11 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
                 }),
                 PropertyPaneCheckbox('loadPC', {
                   text: 'Load page context information',
-                  checked: true
+                  checked: false
                 }),
                 PropertyPaneCheckbox('loadSP', {
                   text: 'Load SP.js and its dependencies',
-                  checked: true
+                  checked: false
                 })
               ]
             }
