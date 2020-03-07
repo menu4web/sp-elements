@@ -7,3 +7,7 @@ Custom Branding, Tabs and Chart - https://youtu.be/33GZQfHiKpM
 Customize List Views and Forms - https://youtu.be/yjb6xR2j9k0
 
 Move JavaScript customizations to modern SharePoint - https://youtu.be/4ieloE06B08
+
+Advanced modern SharePoint list form customizations - https://youtu.be/heREQOU_i5o
+
+![](SPe-Examples/claims.png)

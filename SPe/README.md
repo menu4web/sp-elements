@@ -1,1 +1,1 @@
-SharePoint utility library.
+Utility library for customizing SharePoint with JavaScript.
