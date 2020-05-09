@@ -27,7 +27,7 @@ var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
 
 // Fields
 
-refForm.style.maxWidth = "649px";
+SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "649px";
 
 if (mode === "new" || mode === "edit") {
 
