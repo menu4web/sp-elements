@@ -12,9 +12,9 @@ var refTitle = SPe.Form.elGetByText(refForm, "input", "Title");
 var refEmployee = SPe.Form.elGetByText(refForm, "input", "pickerInput") || SPe.Form.elGetByText(refForm, "label", "Employee");
 var refOffice = SPe.Form.elGetByText(refForm, "input", "Office");
 var refDepartment = SPe.Form.elGetByText(refForm, "input", "Department");
-var refChecklist = SPe.Form.elGetByText(refForm, "label", "Checklist"); refChecklist = SPe.Form.elGet(SPe.Form.elGetParent(refChecklist, "div"), "span", "Dropdown") || refChecklist;
+var refChecklist = SPe.Form.elGetByText(refForm, "label", "Checklist"); refChecklist = SPe.Form.elGet(SPe.Form.elGetParent(refChecklist, "div", "clientFormField"), "span", "Dropdown") || refChecklist;
 var refMyInformation = SPe.Form.elGetByText(refForm, "textarea", "My Information") || SPe.Form.elGetParent(SPe.Form.elGetByText(refForm, "label", "My"), "div", "clientFormField");
-var refDependent = SPe.Form.elGetByText(refForm, "textarea", "Dependent") || SPe.Form.elGetParent(SPe.Form.elGetByText(refForm, "label", "Dependent"), "div", "clientFormField");
+var refDependent = SPe.Form.elGetByText(refForm, "textarea", "Dependent(s) Information") || SPe.Form.elGetParent(SPe.Form.elGetByText(refForm, "label", "Dependent"), "div", "clientFormField");
 var refTotal = SPe.Form.elGetByText(refForm, "input", "Total"); SPe.totalCost = refTotal;
 var refCurrency = SPe.Form.elGetByText(refForm, "label", "Currency");
 var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
@@ -33,7 +33,7 @@ var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
 
 // Fields
 
-refForm.style.maxWidth = "649px";
+SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "649px";
 
 if (mode === "new" || mode === "edit") {
 
@@ -91,12 +91,15 @@ SPe.calcAmount = function () {
 	SPe.Form.setField(SPe.totalCost, t);
 };
 
-var myForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6' onfocus='SPe.Form.rowDuplicate(this)'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' type='text' class='ftAmount' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679' size='8'></td></tr></table>";
+var myForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8' onfocus='SPe.Form.rowDuplicate(this)'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' type='text' class='ftAmount' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679; background-color: #faf9f8' size='8'></td></tr></table>";
 
-var dpForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Dependent Name</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><input onchange='SPe.calcAmount()' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #a6a6a6' size='25' onfocus='SPe.Form.rowDuplicate(this)'></td><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6' style='width: 130px'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' class='ftAmount' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679' size='8'></td></tr></table>";
+var dpForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Dependent Name</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><input onchange='SPe.calcAmount()' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #a6a6a6; background-color: #faf9f8' size='25' onfocus='SPe.Form.rowDuplicate(this)'></td><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8' style='width: 130px'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' class='ftAmount' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679; background-color: #faf9f8' size='8'></td></tr></table>";
 
 SPe.Form.textareaReplace(refMyInformation, myForm);
 SPe.Form.textareaReplace(refDependent, dpForm);
+
+SPe.Form.elGetParent(refMyInformation, "div", "Note-Plain").style.minHeight = "0";
+SPe.Form.elGetParent(refDependent, "div", "Note-Plain").style.minHeight = "0";
 
 // Total
 
