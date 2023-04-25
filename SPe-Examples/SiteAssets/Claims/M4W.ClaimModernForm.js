@@ -6,26 +6,21 @@ SPe.initClaimForm = function () {
 
 var refForm = SPe.Form.get();
 
-SPe.Util.when(function () { return !(!SPe.Form.elGetByText(refForm, "label", "Title") || !SPe.Form.elGetByText(refForm, "label", "Employee")); }, function () {
+SPe.Util.when(function () { return SPe.Form.elGetByText(refForm, "label", "Title") && SPe.Form.elGetByText(refForm, "label", "Employee"); }, function () {
 
 var refTitle = SPe.Form.elGetByText(refForm, "input", "Title");
 var refEmployee = SPe.Form.elGetByText(refForm, "input", "pickerInput") || SPe.Form.elGetByText(refForm, "label", "Employee");
 var refOffice = SPe.Form.elGetByText(refForm, "input", "Office");
 var refDepartment = SPe.Form.elGetByText(refForm, "input", "Department");
-var refChecklist = SPe.Form.elGetByText(refForm, "label", "Checklist"); refChecklist = SPe.Form.elGet(SPe.Form.elGetParent(refChecklist, "div", "clientFormField"), "span", "Dropdown") || refChecklist;
+var refChecklist = SPe.Form.elGetByText(refForm, "label", "Checklist"); refChecklist = SPe.Form.elGetByText(SPe.Form.elGetParent(refChecklist, "div", "clientFormField"), "span", "ReactFieldEditor") || refChecklist;
 var refMyInformation = SPe.Form.elGetByText(refForm, "textarea", "My Information") || SPe.Form.elGetParent(SPe.Form.elGetByText(refForm, "label", "My"), "div", "clientFormField");
 var refDependent = SPe.Form.elGetByText(refForm, "textarea", "Dependent(s) Information") || SPe.Form.elGetParent(SPe.Form.elGetByText(refForm, "label", "Dependent"), "div", "clientFormField");
 var refTotal = SPe.Form.elGetByText(refForm, "input", "Total"); SPe.totalCost = refTotal;
+var refTotalDiv = refTotal ? SPe.Form.elGetParent(refTotal, "div") : refTotal;
 var refCurrency = SPe.Form.elGetByText(refForm, "label", "Currency");
 var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
 var refComment = SPe.Form.elGetByText(refForm, "textarea", "Comment");
 var refCommentDiv; if(refComment) { refCommentDiv = SPe.Form.elGetByClass(SPe.Form.elGetParent(refComment, "div", "clientFormField"), "div", "AppendedData"); }
-
-// Buttons
-
-SPe.Form.buttonHide("PowerApps");
-SPe.Form.buttonHide("Edit form");
-SPe.Form.buttonHide("Show");
 
 // Mode
 
@@ -33,7 +28,7 @@ var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
 
 // Fields
 
-SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "649px";
+SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "752px";
 
 if (mode === "new" || mode === "edit") {
 
@@ -91,9 +86,9 @@ SPe.calcAmount = function () {
 	SPe.Form.setField(SPe.totalCost, t);
 };
 
-var myForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8' onfocus='SPe.Form.rowDuplicate(this)'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' type='text' class='ftAmount' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679; background-color: #faf9f8' size='8'></td></tr></table>";
+var myForm = "<table cellspacing='3' cellpadding='2'><tr><td><span style='font-size: 0.8em'>Reimbursement Type</span></td><td><span style='font-size: 0.8em'>$€ Amount</span></td></tr><tr><td><select class='root-40' onchange='SPe.calcAmount()' style='padding: 3px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8; font-size: 12px' onfocus='SPe.Form.rowDuplicate(this)'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' type='text' class='ftAmount' style='padding: 4px; border: 0; border-bottom: solid 1px #a6a6a6; background-color: #faf9f8' size='8'></td></tr></table>";
 
-var dpForm = "<table cellspacing='3' cellpadding='3'><tr><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Dependent Name</span></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Reimbursement Type</span></td></td><td><span class='ms-DetailsHeader-cellName' style='font-size: 0.8em'>Amount</span></td></tr><tr><td><input onchange='SPe.calcAmount()' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #a6a6a6; background-color: #faf9f8' size='25' onfocus='SPe.Form.rowDuplicate(this)'></td><td><select onchange='SPe.calcAmount()' style='padding: 4px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8' style='width: 130px'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' class='ftAmount' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #d2a679; background-color: #faf9f8' size='8'></td></tr></table>";
+var dpForm = "<table cellspacing='3' cellpadding='2'><tr><td><span style='font-size: 0.8em'>Dependent Name</span></td><td><span style='font-size: 0.8em'>Reimbursement Type</span></td></td><td><span style='font-size: 0.8em'>$€ Amount</span></td></tr><tr><td><input onchange='SPe.calcAmount()' type='text' style='padding: 4px; border: 0; background-color: #faf9f8' size='25' onfocus='SPe.Form.rowDuplicate(this)'></td><td><select class='root-40' onchange='SPe.calcAmount()' style='padding: 3px; width: 150px; border: solid 1px #a6a6a6; background-color: #faf9f8; font-size: 12px' style='width: 130px; font-size: 12px;'><option value=''></option><option value='Membership'>Membership</option><option value='Lesson'>Lesson</option><option value='Program'>Program</option><option value='Other'>Other</option></select></td><td><input onchange='SPe.calcAmount()' class='ftAmount' type='text' style='padding: 4px; border: 0; border-bottom: solid 1px #a6a6a6; background-color: #faf9f8' size='8'></td></tr></table>";
 
 SPe.Form.textareaReplace(refMyInformation, myForm);
 SPe.Form.textareaReplace(refDependent, dpForm);
@@ -103,16 +98,18 @@ SPe.Form.elGetParent(refDependent, "div", "Note-Plain").style.minHeight = "0";
 
 // Total
 
-refTotal.style.width = "270px";
-refTotal.style.borderColor = "#d2a679";
+refTotal.style.borderBottom = "solid 1px #a6a6a6";
+refTotalDiv.style.width = "247px";
+refTotalDiv.style.borderWidth = "0px";
 
 // Comments
 
-refComment.rows = "5";
+refComment.rows = "4";
 
 if (refCommentDiv) {
-	refCommentDiv.style.fontSize = "13px";
+	refCommentDiv.style.fontSize = "12px";
 	refCommentDiv.style.color = "#333333";
+	refCommentDiv.style.lineHeight = "3px";
 	SPe.Form.commentsGroom(refCommentDiv);
 }
 

@@ -2,18 +2,39 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "Resource Loader",
-    "id": "1907324f-188f-45ac-8808-47fd3fd80abe",
+    "id": "b8abfafc-b9f0-47f1-a12e-3e0e496f9cac",
     "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Load SPe.js and Resources.js."
+      },
+      "longDescription": {
+        "default": "Load SPe.js and Resources.js."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
     "features": [
       {
         "title": "Resource Loader",
         "description": "Load SPe.js and Resources.js.",
-        "id": "9e24c6f0-be3b-4d08-8303-58bc7ecfdba1",
+        "id": "c4fe7e8f-4854-4b91-8580-303a4977724f",
         "version": "1.0.0.0",
         "assets": {
           "elementManifests": [
             "elements.xml",
-            "clientsideinstance.xml"
+            "ClientSideInstance.xml"
           ]
         }
       }

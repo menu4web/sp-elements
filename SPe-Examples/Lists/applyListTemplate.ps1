@@ -4,9 +4,6 @@ $templateName = "requests.stp"
 $path = [regex]::Replace($MyInvocation.MyCommand.Definition, "\\applyListTemplate.ps1", "")
 cd $path
 
-Connect-PnPOnline -Url $siteURL
+Connect-PnPOnline -Url $siteURL -UseWebLogin
 
 Apply-PnPProvisioningTemplate -Path ("{0}.xml" -f $templateName)
-
-
-

@@ -1,9 +1,10 @@
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneCheckbox } from '@microsoft/sp-property-pane';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { SPComponentLoader } from '@microsoft/sp-loader';
 import { SPHttpClient } from "@microsoft/sp-http";
+import { SPComponentLoader } from '@microsoft/sp-loader';
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneCheckbox } from '@microsoft/sp-property-pane';
+
+//import styles from './ContentLoaderWebPart.module.scss';
 
 export interface IContentLoaderWebPartProps {
   url: string;
@@ -13,7 +14,7 @@ export interface IContentLoaderWebPartProps {
 
 export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContentLoaderWebPartProps> {
 
-  private evalScript(el: any) {
+  private evalScript(el: HTMLFormElement): void {
     const data = (el.text || el.textContent || el.innerHTML || "");
     const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
     const scriptTag = document.createElement("script");
@@ -38,12 +39,14 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
     headTag.removeChild(scriptTag);
   }
 
-  private nodeName(el: HTMLElement, name: string) {
+  private nodeName(el: HTMLElement, name: string): boolean {
     return el.nodeName && el.nodeName.toUpperCase() === name.toUpperCase();
   }
 
-  private async executeScript(el: HTMLElement) {
-    (<any>window).ScriptGlobal = {};
+  private async executeScript(el: HTMLElement): Promise<void> {
+    const w = (window as any);
+
+    w.ScriptGlobal = {};
 
     const scripts = [];
     const children_nodes = el.childNodes;
@@ -68,9 +71,9 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
     }
 
     let oldamd = null;
-    if (window["define"] && window["define"].amd) {
-      oldamd = window["define"].amd;
-      window["define"].amd = null;
+    if (w.define && w.define.amd) {
+      oldamd = w.define.amd;
+      w.define.amd = null;
     }
 
     for (let i = 0; i < urls.length; i++) {
@@ -83,7 +86,7 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
     }
 
     if (oldamd) {
-      window["define"].amd = oldamd;
+      w.define.amd = oldamd;
     }
 
     for (let i = 0; scripts[i]; i++) {
@@ -98,58 +101,34 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
   }
 
   public render(): void {
+
     if (this.properties.url) {
 
-      let w = (window as any);
+      const w = (window as any);
 
       if (this.properties.loadPC) {
-        if (!w._spPageContextInfo) {
-          w._spPageContextInfo = this.context.pageContext.legacyPageContext;
-        }
-
-        if (!document.getElementById('__REQUESTDIGEST')) {
-          let digestValue = this.context.pageContext.legacyPageContext.formDigestValue;
-          let requestDigestInput: Element = document.createElement('input');
-          requestDigestInput.setAttribute('type', 'hidden');
-          requestDigestInput.setAttribute('name', '__REQUESTDIGEST');
-          requestDigestInput.setAttribute('id', '__REQUESTDIGEST');
-          requestDigestInput.setAttribute('value', digestValue);
-          document.body.appendChild(requestDigestInput);
-        }
+        if (!w._spPageContextInfo) { w._spPageContextInfo = this.context.pageContext.legacyPageContext; }
       }
 
       if (this.properties.loadSP) {
         if (!w.SP) {
           SPComponentLoader.loadScript('/_layouts/15/init.js', { globalExportsName: '$_global_init' })
-          .then((): Promise<{}> => {
-            return SPComponentLoader.loadScript('/_layouts/15/MicrosoftAjax.js', { globalExportsName: 'Sys' });
-          })
-          .then((): Promise<{}> => {
-            return SPComponentLoader.loadScript('/_layouts/15/SP.Runtime.js', { globalExportsName: 'g_all_modules' });
-          })
-          .then((): void => {
-            SPComponentLoader.loadScript('/_layouts/15/SP.js', { globalExportsName: 'SP' });
-          });
+          .then((): Promise<{}> => SPComponentLoader.loadScript('/_layouts/15/MicrosoftAjax.js', { globalExportsName: 'Sys' }))
+          .then((): Promise<{}> => SPComponentLoader.loadScript('/_layouts/15/SP.Runtime.js', { globalExportsName: 'g_all_modules' }))
+          .then((): void => {SPComponentLoader.loadScript('/_layouts/15/SP.js', { globalExportsName: 'SP' }).catch(() => undefined)})
+          .catch(() => undefined);
         }
       }
 
-      this.context.spHttpClient.get(`${escape(this.properties.url)}`, SPHttpClient.configurations.v1)  
-      .then((response) => {
-        return response.text();
-      })
-      .then((responseText) => {
-        this.domElement.innerHTML = responseText;
-        this.executeScript(this.domElement);
-      });
+      this.context.spHttpClient.get(`${this.properties.url}`, SPHttpClient.configurations.v1)
+      .then((response) => response.text())
+      .then((responseText) => {this.domElement.innerHTML = responseText; this.executeScript(this.domElement).catch(() => undefined)})
+      .catch(() => undefined);
     }
     else {
       this.domElement.innerHTML = 'Edit this web part and provide content URL.';
     }
-  
-  }
 
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -179,5 +158,13 @@ export default class ContentLoaderWebPart extends BaseClientSideWebPart<IContent
         }
       ]
     };
+  }
+
+  protected onInit(): Promise<void> {
+    return super.onInit();
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
   }
 }

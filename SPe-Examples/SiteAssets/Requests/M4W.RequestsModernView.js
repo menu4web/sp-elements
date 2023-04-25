@@ -1,4 +1,4 @@
-(function () {
+SPe.initRequestsView = function () {
 
 "use strict";
 
@@ -32,11 +32,9 @@ SPe.statusColor = function (e) {
 	}
 };
 
-SPe.initRequestView = function () {
-	SPe.List.listener({
-		"E-mail": SPe.emailLinkify,
-		"Status": SPe.statusColor
-	});
-};
+SPe.List.observe({
+	"Email": SPe.emailLinkify,
+	"Status": SPe.statusColor
+});
 
-}());
+};

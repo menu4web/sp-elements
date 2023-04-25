@@ -2,7 +2,7 @@
 
 if (!window.SPe) {
 
-var SPe = { version: "7.11", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Task: {}, Util: {} };
+var SPe = { version: "7.17", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -14,9 +14,9 @@ SPe.nop = function () { return undefined; };
 
 SPe.has = function (s, c) { return s.indexOf(c) > -1; };
 
-SPe.path = function (path) { return SPe.has(_spPageContextInfo.serverRequestPath, path); };
+SPe.path = function (path) { var url = window.location.href; return SPe.has(url, path); };
 
-SPe.url = function (path) { return _spPageContextInfo.webServerRelativeUrl; };
+SPe.url = function () { var c = _spPageContextInfo; return c.webServerRelativeUrl || c._web.serverRelativeUrl; };
 
 SPe.hide = function (ref) { ref.style.display = "none"; };
 
@@ -244,7 +244,7 @@ SPe.Date.addBusinessDays = function (myd, days, holidays) {
 
 SPe.Form.get = function (base) {
 	base = base || window;
-	var f = base.document.getElementById("part1") || base.document.getElementById("formTbl") || SPe.Form.elGetByClass(document, "div", "od-Panel--md") || SPe.Form.elGetByClass(document, "div", "od-ListForm-fullPage");
+	var f = base.document.getElementById("part1") || base.document.getElementById("formTbl") || SPe.Form.elGetByClass(document, "div", "od-Panel--md") || SPe.Form.elGetByClass(document, "div", "od-ListForm-fullPage") || SPe.Form.elGetByClass(document, "div", "list-form-container-root") || SPe.Form.elGetByClass(document, "div", "Files-rightPaneContent") ;
 	return f;
 };
 
@@ -285,6 +285,20 @@ SPe.Form.elGetByText = function (el, tagName, txtContains) {
 	var i;
 	for (i = elms.length-1; i >= 0; i--) {
 		if (!txtContains || SPe.has(elms[i].parentNode.innerHTML, txtContains)) {
+			ctr = elms[i];
+			break;
+		}
+	}
+	return ctr;
+};
+
+SPe.Form.elGetByAttribute = function (el, tagName, attrName, attrContains) {
+	var ctr = null;
+	var elms = el.getElementsByTagName(tagName);
+	var i, a;
+	for (i = 0; i < elms.length; i++) {
+		a = elms[i].getAttribute(attrName);
+		if (a && SPe.has(a, attrContains)) {
 			ctr = elms[i];
 			break;
 		}
@@ -402,7 +416,7 @@ SPe.Form.elRewrite = function (ref, rval) {
 	SPe.hide(ctr);
 	var desc = SPe.Form.elGetByClass(p, "span", "ms-metadata"); if (desc) { SPe.hide(desc); }
 	var span = document.createElement("span");
-	if (SPe.has(SPe.type(p), "div")) { span.style.padding = "6px 12px 1px 12px";  span.style.fontSize = "14px"; }
+	if (SPe.has(SPe.type(p), "div")) { span.style.padding = "6px 12px 1px 12px"; span.style.fontSize = "14px"; }
 	span.innerHTML = val;
 	p.insertBefore(span, p.firstChild);
 };
@@ -417,15 +431,15 @@ SPe.Form.setField = function (ref, val) {
 };
 
 SPe.Form.setPersonField = function (ref, val) {
-	SPe.Form.setField(ref, val);
 	SPe.Util.wait(function setPerson () {
+		SPe.Form.setField(ref, val);
 		ref.focus();
-		function sug () { return document.getElementById("sug-0"); }
-		SPe.Util.when(sug, function () {
-			SPe.Form.elGetByText(sug(), "button", "ms-Suggestions").click();
-			ref.blur();
+		function sug () { return document.querySelector("button.ms-Suggestions-itemButton"); }
+		function prs () { return document.querySelector("div.ms-Persona-primaryText") && sug(); }
+		SPe.Util.when(prs, function () {
+			sug().click(); ref.blur();
 		});
-	});
+	}, 300);
 };
 
 SPe.Form.preSaveTextareas = [];
@@ -963,7 +977,7 @@ SPe.Form.taxonomyPicker = function (id, sspid, tid, options) {
 			t.AnchorId = aid;
 			t.FieldName = "";
 			t.FieldId = aid;
-			t.WebServiceUrl = _spPageContextInfo.webServerRelativeUrl + "\u002f_vti_bin\u002fTaxonomyInternalService.json";
+			t.WebServiceUrl = SPe.url() + "\u002f_vti_bin\u002fTaxonomyInternalService.json";
 			SPe.Util.augment(t, options);
 			SP.SOD.executeFunc("ScriptForWebTaggingUI.js", "Microsoft.SharePoint.Taxonomy.ScriptForWebTaggingUI.taggingLoad", function () { Microsoft.SharePoint.Taxonomy.ScriptForWebTaggingUI.resetEventsRegistered(); });
 			SP.SOD.executeFunc("ScriptForWebTaggingUI.js", "Microsoft.SharePoint.Taxonomy.ScriptForWebTaggingUI.onLoad", function () { Microsoft.SharePoint.Taxonomy.ScriptForWebTaggingUI.onLoad(t.id); });
@@ -1037,17 +1051,20 @@ SPe.Form.buttonHide = function (btxt) {
 	});
 };
 
-SPe.Form.observe = function (callback) {
-	function getDiv () { return document.querySelector("div.od-OverlayHost"); }
+SPe.Form.observe = function (callback, lookup) {
+	function getDiv () {
+		var ref = lookup ? lookup() : document.querySelector("div.od-panel-md-listform") || document.querySelector("div.Files-hostContainer");
+		return ref;
+	}
 	SPe.Util.when(getDiv, function () {
 		var observer = new MutationObserver(function (mutations) {
 			mutations.forEach(function (m) {
 				if (SPe.has(m.target.className, "od-ListForm-topBar")) {
-					SPe.Util.wait(function formLoading () { callback(); });
+					SPe.Util.wait(function loadForm () { callback(); });
 				}
 			});
 		});
-		observer.observe(getDiv(), { attributes: false, childList: true, subtree: true });
+		observer.observe(getDiv(), { attributes: true, childList: true, subtree: true });
 	});
 };
 
@@ -1055,12 +1072,12 @@ SPe.Form.observe = function (callback) {
 
 SPe.List.listen = true;
 
-SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(function customizer () {
+SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(function listCust () {
 	SPe.List.listen = false;
 
 	var hds = [], hfs = {};
-	function headers (c, col) { if (SPe.has(c.innerText, col)) { var ci = c.getAttribute("aria-colindex"); hds.push(ci); hfs[ci] = cols[col]; } }
-	var h = document.querySelector("div.ms-DetailsHeader");
+	function headers (c, col) { var ci = c.getAttribute("data-item-key"); if (ci && ci === col) { hds.push(ci); hfs[ci] = cols[col]; } }
+	var h = document.querySelector("div.ms-DetailsList-headerWrapper");
 	if (h) {
 		var cs = h.querySelectorAll("div.ms-DetailsHeader-cell");
 		var i, col;
@@ -1072,13 +1089,13 @@ SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(fun
 	}
 
 	function echange (e, hf) { e.addEventListener("DOMCharacterDataModified", function () { hf(e); }); }
-	var l = document.querySelector("div.ms-List");
+	var l = document.querySelector("div.ms-List-page");
 	if (l) {
 		var elms = l.querySelectorAll("div.ms-DetailsRow-cell");
 		var d, e, j, di, hf;
 		for (j = 0; j < elms.length; j++) {
 			d = elms[j];
-			di = d.getAttribute("aria-colindex");
+			di = d.getAttribute("data-automation-key");
 			if (SPe.has(hds, di)) {
 				e = d.querySelector("div.od-FieldRenderer-text");
 				hf = hfs[di];
@@ -1088,13 +1105,16 @@ SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(fun
 	}
 
 	SPe.List.listen = true;
-}, 50); } };
+}); } };
 
-SPe.List.listener = function (cols) {
-	function getDiv () { return document.querySelector("div.od-ItemContent-list"); }
+SPe.List.observe = function (cols) {
+	function c () { SPe.List.customizer(cols); };
+	function getDiv () { return document.querySelector("div.ms-List-page"); }
 	SPe.Util.when(getDiv, function () {
 		SPe.List.customizer(cols);
-		getDiv().addEventListener("DOMNodeInserted", function () { SPe.List.customizer(cols); });
+		var d = getDiv();
+		d.removeEventListener("DOMNodeInserted", c);
+		d.addEventListener("DOMNodeInserted", c);
 	});
 };
 
@@ -1257,7 +1277,7 @@ SPe.Rest.headers = function (options) {
 	}
 
 	if (!options || SPe.has(options, "digest")) {
-		headers["X-RequestDigest"] = document.getElementById("__REQUESTDIGEST").value;
+		headers["X-RequestDigest"] = _spPageContextInfo.formDigestValue || document.getElementById("__REQUESTDIGEST").value;
 	}
 
 	return headers;
@@ -1310,7 +1330,7 @@ SPe.Tabs.add = function (ref, cells, style, callback) {
 	var set = SPe.Tabs.set[index];
 	var home = SPe.Form.elGetParent(ref, "table", "ms-formtable") || SPe.Form.elGetParent(ref, "div", "ReactClientFormFields");
 	set.home = home;
-	set.t  = SPe.has(SPe.type(home), "table");
+	set.t = SPe.has(SPe.type(home), "table");
 	set.cells = cells;
 	set.callback = callback;
 	var dstyle = set.t ? {
@@ -1433,56 +1453,16 @@ SPe.Tabs.go = true;
 SPe.Tabs.msgMonitor = function (refs, tid) {
 	refs.forEach(function (ref) {
 		var p = SPe.Form.elGetParent(ref, "td") || SPe.Form.elGetParent(ref, "div", "clientFormField");
-		var pf = SPe.Form.elGetParent(ref, "table") || SPe.Form.elGetParent(ref, "div", "ReactClientForm");
+		var pf = SPe.Form.elGetParent(ref, "table") || SPe.Form.elGetParent(ref, "div", "ReactClientFormFields");
 		SPe.Form.elMonitor(p, function () {
 			if (SPe.has(p.innerHTML, "blank")) {
 				if (SPe.Tabs.go) {
 					SPe.Tabs.go = false;
 					SPe.Tabs.click(SPe.Form.elGet(pf, "td", tid));
-					setTimeout(function () { SPe.Tabs.go = true; }, 50);
+					setTimeout(function () { SPe.Tabs.go = true; }, 99);
 				}
 			}
 		});
-	});
-};
-
-// Task
-
-SPe.Task.outcome = function (outcome) {
-	SPe.Task.refTaskOutcome.value = outcome;
-	SPe.Task.refStatus.value = "Completed";
-};
-
-SPe.Task.groom = function () {
-	var refForm = SPe.Form.get();
-	SPe.Task.refStatus = SPe.Form.elGet(refForm, "select", "DropDownChoice", "Status");
-	SPe.Task.refTaskOutcome = SPe.Form.elGet(refForm, "select", "DropDownChoice", "Task Outcome");
-
-	if (SPe.Task.refStatus.value === "Completed") {
-		SPe.Form.elRewrite(SPe.Task.refTaskOutcome);
-		SPe.Form.elRewrite(SPe.Task.refStatus);
-		var refCommentsText = SPe.Form.elGet(refForm, "textarea", "TextField", "Comments"); if (refCommentsText) { SPe.Form.elRewrite(refCommentsText); }
-
-		var elms = refForm.getElementsByTagName("input");
-		var i;
-		for (i = 0; i < elms.length; i++) {
-			if (elms[i].type === "button" && !elms[i].name) {
-				SPe.hide(elms[i]);
-			}
-		}
-	}
-	else {
-		SPe.Form.elHide(SPe.Task.refTaskOutcome);
-		SPe.Form.elHide(SPe.Task.refStatus);
-	}
-
-	var refRelatedItems = SPe.Form.elGet(refForm, "div", "MainPanel");
-	var td = refRelatedItems.parentNode;
-	SPe.hide(td);
-	SPe.Form.elMonitor(refRelatedItems, function () {
-		var refAddRelatedItems = SPe.Form.elGet(td, "a", "add_related_items"); if (refAddRelatedItems) { SPe.hide(refAddRelatedItems.parentNode); }
-		var refRemoveRelatedItems = SPe.Form.elGet(td, "a", "item_remove"); if (refRemoveRelatedItems) { SPe.hide(refRemoveRelatedItems.parentNode); }
-		SPe.show(td);
 	});
 };
 
@@ -1648,21 +1628,21 @@ SPe.Util.xmlProperties = function (xml) {
 	return j;
 };
 
-SPe.Util.functionName = function (f) {
-	var n = f.name;
-	if (!n) {
-		n = f.toString();
-		n = n.substr(9);
-		n = n.substr(0, n.indexOf("(")).trim();
-	}
-	return n;
+SPe.Util.code = function (str) {
+	return str.split("").reduce((prevHash, currVal) =>
+		(((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
+};
+
+SPe.Util.fun = function (f) {
+	var n = f.name || SPe.Util.code(f.toString());
+	return n.toString();
 };
 
 SPe.Util.timeout = [];
 
 SPe.Util.wait = function (callback, ms) {
-	ms = ms || 191;
-	var f = SPe.Util.functionName(callback) || "no-name";
+	ms = ms || 99;
+	var f = SPe.Util.fun(callback);
 	clearTimeout(SPe.Util.timeout[f]);
 	SPe.Util.timeout[f] = setTimeout(callback, ms);
 };
@@ -1685,7 +1665,7 @@ SPe.Util.when = function (lookup, callback) {
 			if (!lookup()) { ready = false; }
 		}
 		if (ready) { callback(); } else { if (c < 99) { c++; check(); } }
-	}, 55); }
+	}, 99); }
 	check();
 };
 
@@ -1697,7 +1677,7 @@ SPe.Util.do = function (fname) {
 			f = !i ? window[s[i]] : f[s[i]];
 		}
 		Object.defineProperty(f, "name", { value: fname, writable: false });
-		SPe.Util.wait(f, 88);
+		SPe.Util.wait(f);
 	});
 };
 
@@ -1751,6 +1731,25 @@ SPe.Util.csv = function (filename, data) {
 	}
 };
 
+SPe.Util.writeTable = function (table, data) {
+	var x, xc = table.rows.length, cl = table.rows[0].cells.length;
+	for (x = xc - 1; x > 0; x--) { table.deleteRow(x); }
+	var i, r, c, j, dl = data.length;
+	for (i = 0; i < dl; i++) {
+		r = table.insertRow(-1);
+		r.style.verticalAlign = "top";
+		for (j = 0; j < cl; j++) {
+			r.insertCell(j).innerHTML = data[i][j];
+		}
+	}
+	if (!dl) {
+		r = table.insertRow(1);
+		c = r.insertCell(0);
+		c.colSpan = cl;
+		c.innerHTML = "<font color='#a59e9c'>No entries found.</font>";
+	}
+};
+
 SPe.Util.toTitleCase = function (str) {
 	return str.replace(/\b\w+/g, function(txt){
 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -1786,18 +1785,17 @@ SPe.Util.load = function (r) {
 	});
 };
 
-SPe.Util.colorCode = function (cs) {
-	var cc;
-	function s (c) { return SPe.has(cs, c); }
-	if (s("Submitted")) { cc = "#007497"; }
-	if (s("Verified")) { cc = "#6b399d"; }
-	if (s("Approved") || s("Succeeded")) { cc = "#249324"; }
-	if (s("Rejected") || s("Failed")) { cc = "#e60000"; }
-	if (s("Returned") || s("Partially")) { cc = "#bf0000"; }
-	if (s("Completed") || s("Executed") || s("Closed")) { cc = "#476d4c"; }
-	if (s("Draft") || s("Cancelled") || s("Deferred")) { cc = "#8c8c8c"; }
-	if (cc) { cs = "<span style='color: " + cc + "'>" + cs + "</span>"; }
-	return cs;
+SPe.Util.colorCode = function (cs, rc) {
+	var s = (t) => SPe.has(cs, t);
+	var cc =
+		s("Submitted") ? "#007497" :
+		s("Verified") || s("Processed")? "#6b399d" :
+		s("Approved") || s("Succeeded") ? "#249324" :
+		s("Rejected") || s("Failed") ? "#e60000" :
+		s("Returned") || s("Partial") ? "#bf0000" :
+		s("Completed") || s("Executed") || s("Closed") ? "#476d4c" :
+		s("Draft") || s("Cancelled") || s("Deferred") ? "#8c8c8c" : "";
+	return rc && cc ? cc : cc ? "<span style='color: " + cc + "'>" + cs + "</span>" : "";
 };
 
 };

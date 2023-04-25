@@ -1,11 +1,20 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "spo",
-    "version": "1.8.0",
+    "nodeVersion": "16.18.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
     "libraryName": "resource-loader",
-    "libraryId": "1907324f-188f-45ac-8808-47fd3fd80abe",
+    "libraryId": "b8abfafc-b9f0-47f1-a12e-3e0e496f9cac",
+    "environment": "spo",
     "packageManager": "npm",
+    "solutionName": "Resource Loader",
+    "solutionShortDescription": "Resource Loader description",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "extension",
     "extensionType": "ApplicationCustomizer"

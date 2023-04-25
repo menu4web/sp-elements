@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "287cb3bf-2d2f-42dd-80f8-4f382d0ab4dc",
+  "id": "6b464f38-9d9a-4aee-ab54-5fc8bd7382a6",
   "alias": "ContentLoaderWebPart",
   "componentType": "WebPart",
 
@@ -12,11 +12,12 @@
   // Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-  "supportedHosts": ["SharePointWebPart"],
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
     "title": { "default": "Content Loader" },
     "description": { "default": "Load content from a text file." },
     "officeFabricIconFontName": "Preview",

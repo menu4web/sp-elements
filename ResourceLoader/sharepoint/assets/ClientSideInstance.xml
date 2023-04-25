@@ -3,7 +3,7 @@
     <ClientSideComponentInstance
         Title="ResourceLoader"
         Location="ClientSideExtension.ApplicationCustomizer"
-        ComponentId="09a02def-a935-4a9c-8351-684df65d07d7"
+        ComponentId="aaf92592-c2e9-4f5d-837a-5221bb4627f5"
         Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
     </ClientSideComponentInstance>
 </Elements>

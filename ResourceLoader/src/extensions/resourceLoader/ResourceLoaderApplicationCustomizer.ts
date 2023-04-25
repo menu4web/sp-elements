@@ -1,12 +1,9 @@
-import { override } from '@microsoft/decorators';
-import { Log } from '@microsoft/sp-core-library';
-import { SPComponentLoader } from '@microsoft/sp-loader';
 import { BaseApplicationCustomizer } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 
-import * as strings from 'ResourceLoaderApplicationCustomizerStrings';
+//import * as strings from 'ResourceLoaderApplicationCustomizerStrings';
 
-const LOG_SOURCE: string = 'ResourceLoaderApplicationCustomizer';
+//const LOG_SOURCE: string = 'ResourceLoaderApplicationCustomizer';
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -22,30 +19,32 @@ export interface IResourceLoaderApplicationCustomizerProperties {
 export default class ResourceLoaderApplicationCustomizer
   extends BaseApplicationCustomizer<IResourceLoaderApplicationCustomizerProperties> {
 
-    @override
-    public onInit(): Promise<void> {
-  
-      let w = (window as any);
-      if (!w._spPageContextInfo) {
-        w._spPageContextInfo = this.context.pageContext.legacyPageContext;
-      }
-  
-      if (!document.getElementById('__REQUESTDIGEST')) {
-        let digestValue = this.context.pageContext.legacyPageContext.formDigestValue;
-        let requestDigestInput: Element = document.createElement('input');
-        requestDigestInput.setAttribute('type', 'hidden');
-        requestDigestInput.setAttribute('name', '__REQUESTDIGEST');
-        requestDigestInput.setAttribute('id', '__REQUESTDIGEST');
-        requestDigestInput.setAttribute('value', digestValue);
-        document.body.appendChild(requestDigestInput);
-      }
-  
-      SPComponentLoader.loadScript('/libs/SPe.js', { globalExportsName: 'SPe' })
-      .then((): void => {
-        SPComponentLoader.loadScript(this.context.pageContext.web.absoluteUrl + '/SiteAssets/Resources.js', { globalExportsName: 'SPe' });
-      });
-  
-      return Promise.resolve();
-      
-    }   
+  private resources(): void {
+    const w = (window as any);
+    w.SPe.Util.wait(w.SPe.resources);
+  }
+
+  private history(): void {
+    ((h) => {
+      var pushState = h.pushState;
+      h.pushState = (state, key, path) => {
+          pushState.apply(h, [state, key, path]);
+          this.resources();
+      };
+    })(window.history);
+    window.addEventListener('popstate', () => this.resources());
+  }
+
+  public onInit(): Promise<void> {
+    const w = (window as any);
+
+    if (!w._spPageContextInfo) { w._spPageContextInfo = this.context.pageContext.legacyPageContext; }
+
+    SPComponentLoader.loadScript('/libs/SPe.js', { globalExportsName: 'SPe' })
+    .then((): Promise<{}> => SPComponentLoader.loadScript(this.context.pageContext.web.absoluteUrl + '/SiteAssets/Resources.js', { globalExportsName: 'SPe' }))
+    .then((): void => { if (w.SPe.resources) { this.history() } })
+    .catch(() => undefined);
+
+    return Promise.resolve();
+  }
 }

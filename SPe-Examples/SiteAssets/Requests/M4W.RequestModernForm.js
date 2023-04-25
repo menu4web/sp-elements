@@ -6,7 +6,7 @@ SPe.initRequestForm = function () {
 
 var refForm = SPe.Form.get();
 
-SPe.Util.when(function () { return !(!SPe.Form.elGetByText(refForm, "label", "Title") || !SPe.Form.elGetByText(refForm, "label", "Requester")); }, function () {
+SPe.Util.when(function () { return SPe.Form.elGetByText(refForm, "label", "Title") && SPe.Form.elGetByText(refForm, "label", "Requester"); }, function () {
 
 var refTitle = SPe.Form.elGetByText(refForm, "input", "Title");
 var refRequester = SPe.Form.elGetByText(refForm, "input", "Requester") || SPe.Form.elGetByText(refForm, "label", "Requester");
@@ -15,19 +15,13 @@ var refNotes = SPe.Form.elGetByText(refForm, "textarea", "Notes");
 var refLocation = SPe.Form.elGetByText(refForm, "label", "Location");
 var refStatus = SPe.Form.elGetByText(refForm, "label", "Status");
 
-// Buttons
-
-SPe.Form.buttonHide("PowerApps");
-SPe.Form.buttonHide("Edit form");
-SPe.Form.buttonHide("Show");
-
 // Mode
 
 var mode = !refTitle ? "view" : refTitle.value ? "edit" : "new";
 
 // Fields
 
-SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "649px";
+SPe.Form.elGetByClass(refForm, "div", "ReactClientFormFields").style.maxWidth = "752px";
 
 if (mode === "new" || mode === "edit") {
 

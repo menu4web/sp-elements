@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
-  "id": "09a02def-a935-4a9c-8351-684df65d07d7",
+  "id": "aaf92592-c2e9-4f5d-837a-5221bb4627f5",
   "alias": "ResourceLoaderApplicationCustomizer",
   "componentType": "Extension",
   "extensionType": "ApplicationCustomizer",

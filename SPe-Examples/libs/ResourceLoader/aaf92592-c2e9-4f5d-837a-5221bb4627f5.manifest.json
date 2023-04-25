@@ -1,0 +1,31 @@
+{
+  "id": "aaf92592-c2e9-4f5d-837a-5221bb4627f5",
+  "alias": "ResourceLoaderApplicationCustomizer",
+  "componentType": "Extension",
+  "extensionType": "ApplicationCustomizer",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/dist/"
+    ],
+    "entryModuleId": "resource-loader-application-customizer",
+    "scriptResources": {
+      "resource-loader-application-customizer": {
+        "type": "path",
+        "path": "resource-loader-application-customizer_d1695a7933f4bf9e31a8.js"
+      },
+      "@microsoft/sp-application-base": {
+        "type": "component",
+        "id": "4df9bb86-ab0a-4aab-ab5f-48bf167048fb",
+        "version": "1.16.1"
+      },
+      "@microsoft/sp-loader": {
+        "type": "component",
+        "id": "1c6c9123-7aac-41f3-a376-3caea41ed83f",
+        "version": "1.16.1"
+      }
+    }
+  }
+}
