@@ -1064,7 +1064,7 @@ SPe.Form.observe = function (callback, lookup) {
 				}
 			});
 		});
-		observer.observe(getDiv(), { attributes: true, childList: true, subtree: true });
+		observer.observe(getDiv(), { attributes: false, childList: true, subtree: true });
 	});
 };
 

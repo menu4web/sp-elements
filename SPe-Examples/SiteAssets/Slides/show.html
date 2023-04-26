@@ -1,10 +1,14 @@
 <ul class="rslides" id="slider"></ul>
 
-<link rel="stylesheet" href="/sites/DEV_SLAVA/SiteAssets/Slides/responsiveslides.css"/>
-<link rel="stylesheet" href="/sites/DEV_SLAVA/SiteAssets/Slides/M4W.Slides.css"/>
 <script src="/libs/jquery-3.4.1.min.js"></script>
 <script src="/libs/SPe.js"></script>
-<script src="/sites/DEV_SLAVA/SiteAssets/Slides/responsiveslides.min.js"></script>
-<script src="/sites/DEV_SLAVA/SiteAssets/Slides/M4W.Slides.js"></script>
 
-<script>if (window.SPe) { SPe.Util.do("SPe.initSlides"); }</script>
+<script>
+SPe.Util.load([
+SPe.url() + "/SiteAssets/Slides/responsiveslides.css",
+SPe.url() + "/SiteAssets/Slides/M4W.Slides.css",
+SPe.url() + "/SiteAssets/Slides/responsiveslides.min.js",
+SPe.url() + "/SiteAssets/Slides/M4W.Slides.js"
+]);
+SPe.Util.do("SPe.initSlides");
+</script>

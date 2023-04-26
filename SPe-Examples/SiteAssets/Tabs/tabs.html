@@ -3,6 +3,8 @@
 </div>
 
 <script src="/libs/SPe.js"></script>
-<script src="/sites/DEV_SLAVA/SiteAssets/Tabs/M4W.HomeTabs.js"></script>
 
-<script>if (window.SPe) { SPe.Util.do("SPe.initTabs"); }</script>
+<script>
+SPe.Util.load([SPe.url() + "/SiteAssets/Tabs/M4W.HomeTabs.js"]);
+SPe.Util.do("SPe.initTabs");
+</script>
