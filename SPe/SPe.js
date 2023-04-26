@@ -1781,6 +1781,7 @@ SPe.Util.load = function (r) {
 	}
 
 	r.forEach(function (l) {
+		l = l.replace("~site", SPe.url());
 		if (SPe.has(l.toLowerCase(), ".css")) { loadCss(l); } else { loadScript(l); }
 	});
 };
