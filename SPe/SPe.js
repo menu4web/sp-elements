@@ -2,7 +2,7 @@
 
 if (!window.SPe) {
 
-var SPe = { version: "7.17", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Util: {} };
+var SPe = { version: "7.18", Ajax: {}, Cookie: {}, Date: {}, Form: {}, List: {}, Query: {}, Rest: {}, Tabs: {}, Util: {} };
 
 SPe.init = function () {
 
@@ -1109,11 +1109,10 @@ SPe.List.customizer = function (cols) { if (SPe.List.listen) { SPe.Util.wait(fun
 
 SPe.List.observe = function (cols) {
 	function c () { SPe.List.customizer(cols); };
-	function getDiv () { return document.querySelector("div.ms-List-page"); }
+	function getDiv () { return document.querySelector("div.ms-List-page") || document.querySelector("div.ms-DetailsList"); }
 	SPe.Util.when(getDiv, function () {
 		SPe.List.customizer(cols);
 		var d = getDiv();
-		d.removeEventListener("DOMNodeInserted", c);
 		d.addEventListener("DOMNodeInserted", c);
 	});
 };
